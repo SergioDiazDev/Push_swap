@@ -14,13 +14,13 @@ NAME			=	push_swap
 CFLAGS			=	-Wall -Werror -Wextra
 RM				=	rm -fr
 INCLUDE			=	push_swap.h
-SRCS			=	push_swap.c
+SRCS			=	push_swap.c process_arg.c
 
 @OBJS			=	$(SRCS:.c=.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(SRCS) $(OBJS)
 			@gcc -o $(NAME) $(SRCS) $(CFLAGS) 
 			@echo push_swap compilado
 
@@ -29,7 +29,7 @@ clean:
 		@$(RM) $(OBJS)
 
 fclean:		clean
-			@$(RM) $(NAME) 
+			@$(RM) $(NAME)
 			@echo Todo limpio
 			
 re:		fclean all

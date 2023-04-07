@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   process_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 17:23:49 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/06 17:23:49 by sdiaz-ru         ###   ########.fr       */
+/*   Created: 2023/04/06 18:03:57 by sdiaz-ru          #+#    #+#             */
+/*   Updated: 2023/04/06 18:03:57 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv)
 {
-	t_stack_a	a;
-
-	if (argc <= 1)
-		return (write(1, "Error\n", 7));
-	else if (argc == 2)
+	(void)	a;
+	while (--argc)
 	{
-		printf("argv[1]:%s\n", argv[1]);
-		return (write(1, "Array de enteros\n", 18));
+		write(1, &argv[argc][0], 1);
 	}
-	else if (argc > 2)
-	{
-		//printf("argc:%d\n", argc);
-		ft_procces_stack_a(&a, argc, argv);
-		return (write(1, "Varios numeros\n", 16));
-	}
-	return (0);
+	
 }
