@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 	{
-		//printf("argc:%d\n", argc);
 		ft_procces_stack_a(&a, argc, argv);
 		return (write(1, "Varios numeros\n", 16));
 	}
+	ft_printf("hola");
 	return (0);
 }

@@ -14,10 +14,9 @@
 
 void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv)
 {
-	(void)	a;
 	while (--argc)
 	{
-		write(1, &argv[argc][0], 1);
+		a->value = ft_atoi(argv[argc]);
+		ft_printf("a=");
 	}
-	
 }
