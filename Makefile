@@ -24,29 +24,29 @@ INCLUDE			=	$(DIR_SRC)/push_swap.h
 
 SRCS			=	$(DIR_SRC)/push_swap.c $(DIR_SRC)/push_swap_utils.c $(DIR_SRC)/process_arg.c \
 
-OBJS			=	$(SRCS:.c=.o)
+OBJS			=	$(@SRCS:.c=.o)
 
-$(FALSE).SILENT:
+$(TRUE).SILENT:
 
-all:		make_printf $(NAME)
+all:		$(NAME)
 
-make_printf:
-				@$(MAKE) -C $(DIR_FT_PRINTF)
+$(DIR_FT_PRINTF)/libftprintf.a:
+			@$(MAKE) -C $(DIR_FT_PRINTF)
 
-$(NAME):	$(OBJS)
-				@gcc $(CFLAGS) -o $(NAME) $(SRCS) $(DIR_FT_PRINTF)/libftprintf.a
-				@echo "$(GREEN)CREATE push_swap $(RESET)"
+$(NAME):	$(OBJS) $(DIR_FT_PRINTF)/libftprintf.a
+			gcc -o $(NAME) $(SRCS) $(DIR_FT_PRINTF)/libftprintf.a
+			@echo "$(GREEN)CREATE push_swap $(RESET)"
 
 clean:
-				@$(MAKE) -s clean -C $(DIR_FT_PRINTF)
-				@$(RM) $(OBJS)
-				@echo "$(RED)REMOVE OBJECTS Push_swap$(RESET)\n"
+		@$(MAKE) -s clean -C $(DIR_FT_PRINTF)
+		@$(RM) $(OBJS)
+		@echo "$(RED)REMOVE OBJECTS Push_swap$(RESET)\n"
 
 fclean:		clean
-				@$(MAKE) -s fclean -C $(DIR_FT_PRINTF)
-				@$(RM) $(NAME)
-				@echo "$(RED)DELETE Push_swap$(RESET)\n"
+			@$(MAKE) -s fclean -C $(DIR_FT_PRINTF)
+			@$(RM) $(NAME)
+			@echo "$(RED)DELETE Push_swap$(RESET)\n"
 			
 re:		fclean all
 
-.PHONY: 	all make_printf $(NAME) re clean fclean
+.PHONY: 	all $(DIR_FT_PRINTF)/libftprintf.a $(NAME) re clean fclean
