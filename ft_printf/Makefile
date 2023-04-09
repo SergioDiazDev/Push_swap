@@ -6,13 +6,13 @@
 #    By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 11:10:38 by sdiaz-ru          #+#    #+#              #
-#    Updated: 2023/04/08 17:39:58 by sdiaz-ru         ###   ########.fr        #
+#    Updated: 2023/04/10 00:45:49 by sdiaz-ru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libftprintf.a
 CFLAGS			=	-Wall -Werror -Wextra
-AR				=	ar -rcs
+AR				=	ar -rc
 RM				=	rm -fr
 # COLORS
 GREEN			=	`tput setaf 2`
@@ -22,24 +22,27 @@ INCLUDE			=	ft_printf.h
 
 SRCS			=	ft_printf.c ft_itoa.c ft_writes.c ft_putbase.c
 
-OBJS			=	$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 $(TRUE).SILENT:
 
-all:		$(NAME)
+.PHONY: all clean fclean re
 
-$(NAME):	$(OBJS)
-			@$(AR) $@ $(OBJS)
-			@echo "$(GREEN)CREATED ft_printf $(RESET)\n"
+all: $(NAME)
 
-re:			fclean all
+$(NAME): $(OBJS)
+	ar rc $@ $?
+	@echo "$(GREEN)CREATE ft_Printf $(RESET)\n"
 
-clean: 
-			@$(RM) $(OBJS)
-			@echo "$(RED)REMOVE OBJECT ft_Printf $(RESET)\n"
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-fclean:		
-			@$(RM) $(NAME)
-			@echo "$(RED)DELETE ft_Printf $(RESET)\n"
+clean:
+	@$(RM) $(OBJS)
+	@echo "$(RED)REMOVE OBJECT ft_Printf $(RESET)\n"
 
-.PHONY: 	all $(NAME) re clean fclean 
+fclean:
+	@$(RM) $(NAME)
+	@echo "$(RED)DELETE ft_Printf $(RESET)\n"
+
+re: fclean all
