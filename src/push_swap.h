@@ -17,19 +17,13 @@
 # include <stdio.h>
 # include "../ft_printf/ft_printf.h"
 //structs
-typedef struct s_stack_a
+typedef struct s_stack
 {
-	struct s_stack_a	*next;
-	int					index;
-	int					value;
-}t_stack_a;
-
-typedef struct s_stack_b
-{
-	struct t_stack_b	*next;
-	int					index;
-	int					value;	
-}t_stack_b;
+	struct s_stack	*next;
+	struct s_stack	*back;
+	int				index;
+	int				value;
+}t_stack;
 
 //Prototypes
 //ft_atoi.c
@@ -42,15 +36,19 @@ char		**ft_split(char *str, char sep);
 char		*ft_split_2(char *str, char sep, int init, int size);
 int			ft_count_sep(char *str, int sep);
 //process_arg.c
-void		ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
-t_stack_a	*ft_t_stack_a_new(int value);
-void		ft_lstadd_front(t_stack_a **lst, t_stack_a *new);
+void		ft_procces_stack(t_stack *a, int argc, char **argv);
+t_stack *	ft_t_stack_new(t_stack *a, int value);
+void		ft_reload_stack(t_stack *a);
 //push_swap_utils.c
 void		*ft_calloc(int nmemb, int size);
 void		ft_bzero(void *s, int n);
 //push_swap.c
 int			main(int argc, char **argv);
-//visualicer
-void		visualicer_stack_a(t_stack_a *stack);
-
+//visualicer_stack.c
+void		visualicer_stack(t_stack *stack);
+//moves.c
+void		ft_push(t_stack *origin, t_stack *dest);
+void		ft_rotate(t_stack *origin, t_stack *dest);
+void		ft_reverse_rotate(t_stack *origin, t_stack *dest);
+void		ft_swap(t_stack *origin, t_stack *dest);
 #endif

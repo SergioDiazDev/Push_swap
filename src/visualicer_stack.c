@@ -6,22 +6,21 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:00:00 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/11 13:22:47 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:30:48 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	visualicer_stack_a(t_stack_a *stack)
+void	visualicer_stack(t_stack *stack)
 {
-	t_stack_a	*a;
-
-	a = stack;
-	while (!a)
+	ft_reload_stack(stack);
+	while (stack)
 	{
-		ft_printf("a->value:(%d)", a->value);
-		ft_printf("a->index:(%d)",a->index);
-		ft_printf("a->next:(%p)", a->next);
-		a = a->next;
+		ft_printf("a->value:(%d)\n", stack->value);
+		ft_printf("a->index:(%d)\n", stack->index);
+		ft_printf("a->next:(%p)\n", stack->next);
+		ft_printf("a->back:(%p)\n\n", stack->back);
+		stack = stack->next;
 	}
 }

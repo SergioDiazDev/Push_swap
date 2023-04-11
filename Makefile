@@ -24,7 +24,7 @@ RESET = `tput sgr0`
 INCLUDE			=	$(DIR_SRC)/push_swap.h
 
 SRCS			=	$(DIR_SRC)/push_swap.c $(DIR_SRC)/push_swap_utils.c $(DIR_SRC)/process_arg.c $(DIR_SRC)/ft_split.c $(DIR_SRC)/ft_atoi.c \
-					$(DIR_SRC)/visualicer_stack.c
+					$(DIR_SRC)/visualicer_stack.c $(DIR_SRC)/moves.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -37,7 +37,7 @@ all: $(NAME)
 $(DIR_FT_PRINTF)/$(FT_PRINTF):
 	@make -C $(DIR_FT_PRINTF)
 
-$(NAME): $(OBJS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
+$(NAME): $(DIR_FT_PRINTF)/$(FT_PRINTF) $(OBJS)
 	@gcc -o $@ $?
 	@echo "$(GREEN)CREATE push_swap $(RESET)"
 

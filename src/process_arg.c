@@ -12,32 +12,39 @@
 
 #include "push_swap.h"
 
-void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv)
+void	ft_procces_stack(t_stack *a, int argc, char **argv)
 {
-	int	i;
+	int		i;
 
-	i = 0;
+	i = 1;
+	a->back = NULL;
+	a->value = ft_atoi(argv[1]);
+	a->next = NULL;
 	while (++i < argc)
 	{
-		ft_lstadd_front(&a, ft_t_stack_a_new(ft_atoi(argv[i])));
-		ft_printf("a:%d\n", a->value);
+		ft_t_stack_new(a, ft_atoi(argv[i]));
 	}
+	visualicer_stack(a);
 }
 
-t_stack_a	*ft_t_stack_a_new(int value)
+t_stack	*ft_t_stack_new(t_stack *a, int value)
 {
-	t_stack_a	*newlist;
+	t_stack	*new;
 
-	newlist = (t_stack_a *)malloc(sizeof(t_stack_a));
-	if (newlist == NULL)
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (new == NULL)
+	{
+		ft_printf("Que coño???");
 		return (NULL);
-	newlist->value = value;
-	newlist->next = NULL;
-	return (newlist);
+	}
+	new->back = a;
+	new->value = value;
+	new->next = NULL;
+	return (new);
 }
 
-void	ft_lstadd_front(t_stack_a **lst, t_stack_a *new)
+void	ft_reload_stack(t_stack *a)
 {
-	new->next = *lst;
-	*lst = new;
+	while (a->back)
+		a = a->back;
 }

@@ -14,14 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack_a	a;
+	t_stack	a;
 
 	if (argc <= 1)
 		return (write(1, "Error\n", 7));
 	else if (argc == 2)
-		printf("argv[1]:%s\n", argv[1]);
+		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
 	else if (argc > 2)
-		ft_procces_stack_a(&a, argc, argv);
-	visualicer_stack_a(&a);
+		ft_procces_stack(&a, argc, argv);
+	ft_printf("   Stack A\n");
 	return (0);
 }
