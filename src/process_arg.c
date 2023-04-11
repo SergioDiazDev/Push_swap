@@ -36,7 +36,7 @@ t_stack	*ft_t_stack_new(t_stack **a, int value)
 
 void	ft_reload_stack(t_stack **a)
 {
-	if (a)
+	if (*a)
 	{
 		while ((*a)->back)
 			(*a) = (*a)->back;

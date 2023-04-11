@@ -27,9 +27,11 @@ int	main(int argc, char **argv)
 		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
+	ft_push(a, b);
+	//ft_push(a, b);
 	ft_printf("   Stack A\n");
 	ft_reload_stack(a);
-	//ft_printf("   Stack B\n");
-	//ft_reload_stack(b);
+	ft_printf("   Stack B\n");
+	ft_reload_stack(b);
 	return (0);
 }

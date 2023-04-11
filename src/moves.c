@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/11 23:26:18 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 01:11:30 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	ft_push(t_stack **origin, t_stack **dest)
 {
-	(void) origin;
-	(void) dest;
+	t_stack	*temp;
+
+	temp = *origin;
+	ft_t_stack_new(dest, (*origin)->value);
+	*origin = (*origin)->next;
+	temp->next = (*origin != NULL) ? (*origin)->next : NULL;
+	
 }
 
 void	ft_rotate(t_stack **origin, t_stack **dest)
