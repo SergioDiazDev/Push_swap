@@ -33,20 +33,24 @@ typedef struct s_stack_b
 
 //Prototypes
 //ft_atoi.c
-int		ft_atoi(const char *str);
-int		ft_space(char c);
-int		ft_isdigit(int c);
-long	ft_conum(const char *str, int i);
+int			ft_atoi(const char *str);
+int			ft_space(char c);
+int			ft_isdigit(int c);
+long		ft_conum(const char *str, int i);
 //ft_split.c
-char	**ft_split(char *str, char sep);
-char	*ft_split_2(char *str, char sep, int init, int size);
-int		ft_count_sep(char *str, int sep);
+char		**ft_split(char *str, char sep);
+char		*ft_split_2(char *str, char sep, int init, int size);
+int			ft_count_sep(char *str, int sep);
 //process_arg.c
-void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
+void		ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
+t_stack_a	*ft_t_stack_a_new(int value);
+void		ft_lstadd_front(t_stack_a **lst, t_stack_a *new);
 //push_swap_utils.c
-void	*ft_calloc(int nmemb, int size);
-void	ft_bzero(void *s, int n);
+void		*ft_calloc(int nmemb, int size);
+void		ft_bzero(void *s, int n);
 //push_swap.c
-int		main(int argc, char **argv);
+int			main(int argc, char **argv);
+//visualicer
+void		visualicer_stack_a(t_stack_a *stack);
 
 #endif

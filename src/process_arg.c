@@ -14,8 +14,30 @@
 
 void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv)
 {
-	while (--argc)
+	int	i;
+
+	i = 0;
+	while (++i < argc)
 	{
-		a->value = ft_atoi(argv[argc]);
+		ft_lstadd_front(&a, ft_t_stack_a_new(ft_atoi(argv[i])));
+		ft_printf("a:%d\n", a->value);
 	}
+}
+
+t_stack_a	*ft_t_stack_a_new(int value)
+{
+	t_stack_a	*newlist;
+
+	newlist = (t_stack_a *)malloc(sizeof(t_stack_a));
+	if (newlist == NULL)
+		return (NULL);
+	newlist->value = value;
+	newlist->next = NULL;
+	return (newlist);
+}
+
+void	ft_lstadd_front(t_stack_a **lst, t_stack_a *new)
+{
+	new->next = *lst;
+	*lst = new;
 }
