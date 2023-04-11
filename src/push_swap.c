@@ -14,14 +14,17 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	a;
+	t_stack	*a;
 
+	a = (t_stack *)malloc(sizeof(t_stack));
+	if (a == NULL)
+		return (0);
 	if (argc <= 1)
 		return (write(1, "Error\n", 7));
 	else if (argc == 2)
 		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
 	else if (argc > 2)
-		ft_procces_stack(&a, argc, argv);
+		ft_procces_stack(a, argc, argv);
 	ft_printf("   Stack A\n");
 	return (0);
 }

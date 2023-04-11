@@ -38,7 +38,7 @@ $(DIR_FT_PRINTF)/$(FT_PRINTF):
 	@make -C $(DIR_FT_PRINTF)
 
 $(NAME): $(DIR_FT_PRINTF)/$(FT_PRINTF) $(OBJS)
-	@gcc -o $@ $?
+	gcc -o $@ $?
 	@echo "$(GREEN)CREATE push_swap $(RESET)"
 
 %.o: %.c
