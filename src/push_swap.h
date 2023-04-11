@@ -32,19 +32,21 @@ typedef struct s_stack_b
 }t_stack_b;
 
 //Prototypes
-//push_swap.c
-int		main(int argc, char **argv);
-//process_arg.c
-void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
-//push_swap_utils.c
+//ft_atoi.c
 int		ft_atoi(const char *str);
-long	ft_conum(const char *str, int i);
-void	*ft_calloc(int nmemb, int size);
-void	ft_bzero(void *s, int n);
+int		ft_space(char c);
 int		ft_isdigit(int c);
+long	ft_conum(const char *str, int i);
 //ft_split.c
 char	**ft_split(char *str, char sep);
 char	*ft_split_2(char *str, char sep, int init, int size);
 int		ft_count_sep(char *str, int sep);
+//process_arg.c
+void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
+//push_swap_utils.c
+void	*ft_calloc(int nmemb, int size);
+void	ft_bzero(void *s, int n);
+//push_swap.c
+int		main(int argc, char **argv);
 
 #endif
