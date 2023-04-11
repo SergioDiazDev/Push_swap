@@ -14,12 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	**a;
+	t_stack	**b;
 
-	b = NULL;
-	a = (t_stack *)malloc(sizeof(t_stack));
-	if (a == NULL)
+	b = (t_stack **)malloc(sizeof(t_stack *));
+	a = (t_stack **)malloc(sizeof(t_stack *));
+	if (!a || !b)
 		return (0);
 	if (argc <= 1)
 		return (write(1, "Error\n", 7));
@@ -27,14 +27,9 @@ int	main(int argc, char **argv)
 		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	//ft_printf("   Stack A\n");
-	//ft_reload_stack(a);
-	//ft_printf("   Stack B\n");
-	//ft_reload_stack(b);
-	ft_push(a, b);
 	ft_printf("   Stack A\n");
 	ft_reload_stack(a);
-	ft_printf("   Stack B\n");
-	ft_reload_stack(b);
+	//ft_printf("   Stack B\n");
+	//ft_reload_stack(b);
 	return (0);
 }
