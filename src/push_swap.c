@@ -15,7 +15,9 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	t_stack	*b;
 
+	b = (t_stack *)malloc(sizeof(t_stack));
 	a = (t_stack *)malloc(sizeof(t_stack));
 	if (a == NULL)
 		return (0);
@@ -26,5 +28,13 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
 	ft_printf("   Stack A\n");
+	ft_reload_stack(a);
+	ft_printf("   Stack B\n");
+	ft_reload_stack(b);
+	ft_push(a, b);
+	ft_printf("   Stack A\n");
+	ft_reload_stack(a);
+	ft_printf("   Stack B\n");
+	ft_reload_stack(b);
 	return (0);
 }

@@ -25,7 +25,6 @@ void	ft_procces_stack(t_stack *a, int argc, char **argv)
 		ft_t_stack_new(a, ft_atoi(argv[i]));
 		a = a->next;
 	}
-	ft_reload_stack(a);
 }
 
 t_stack	*ft_t_stack_new(t_stack *a, int value)
@@ -44,7 +43,10 @@ t_stack	*ft_t_stack_new(t_stack *a, int value)
 
 void	ft_reload_stack(t_stack *a)
 {
-	while (a->back)
-		a = a->back;
-	visualicer_stack(a);
+	if (a)
+	{
+		while (a->back)
+			a = a->back;
+		visualicer_stack(a);
+	}
 }
