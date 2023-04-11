@@ -39,7 +39,12 @@ void	ft_procces_stack_a(t_stack_a *a, int argc, char **argv);
 //push_swap_utils.c
 int		ft_atoi(const char *str);
 long	ft_conum(const char *str, int i);
-int		ft_space(char c);
+void	*ft_calloc(int nmemb, int size);
+void	ft_bzero(void *s, int n);
 int		ft_isdigit(int c);
+//ft_split.c
+char	**ft_split(char *str, char sep);
+char	*ft_split_2(char *str, char sep, int init, int size);
+int		ft_count_sep(char *str, int sep);
 
 #endif
