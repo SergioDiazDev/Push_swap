@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:00:00 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 00:36:35 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:55:48 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	visualicer_stack(t_stack **stack)
 {
-	while (*stack)
+	while ((*stack)->next)
 	{
 		ft_printf("a->value:(%d)\n", (*stack)->value);
 		ft_printf("a->index:(%d)\n", (*stack)->index);

@@ -24,14 +24,14 @@ t_stack	*ft_t_stack_new(t_stack **a, int value)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
-        return (NULL);
-    new->back = NULL;
-    new->next = *a;
-    new->value = value;
-    if (*a != NULL)
-        (*a)->back = new;
-    *a = new;
-    return (new);
+		return (NULL);
+	new->back = NULL;
+	new->next = *a;
+	new->value = value;
+	if (*a != NULL)
+		(*a)->back = new;
+	*a = new;
+	return (new);
 }
 
 void	ft_reload_stack(t_stack **a)

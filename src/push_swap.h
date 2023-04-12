@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 //Includes
 # include <unistd.h>
+#include <stdlib.h>
 # include <stdio.h>
 # include "../ft_printf/ft_printf.h"
 //structs
@@ -44,6 +45,8 @@ void	*ft_calloc(int nmemb, int size);
 void	ft_bzero(void *s, int n);
 //push_swap.c
 int		main(int argc, char **argv);
+void	ft_leaks(void);
+void	ft_free_stack(t_stack **a);
 //visualicer_stack.c
 void	visualicer_stack(t_stack **stack);
 //moves.c
