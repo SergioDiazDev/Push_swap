@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	**a;
 	t_stack	**b;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a || !b)
@@ -29,11 +29,15 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
 	//ft_push(a, b);
+	//ft_push(a, b);
+	ft_push(a, b);
+	ft_push(a, b);
 	ft_printf("   Stack A\n");
 	ft_reload_stack(a);
-	//ft_printf("   Stack B\n");
-	//ft_reload_stack(b);
+	ft_printf("   Stack B\n");
+	ft_reload_stack(b);
 	ft_free_stack(a);
+	ft_free_stack(b);
 	return (0);
 }
 
@@ -44,13 +48,16 @@ void	ft_leaks(void)
 
 void	ft_free_stack(t_stack **a)
 {
-	while ((*a)->next)
-		(*a) = (*a)->next;
-	while ((*a)->back)
+	if (*a)
 	{
-		(*a) = (*a)->back;
-		free((*a)->next);
+		while ((*a)->next)
+			(*a) = (*a)->next;
+		while ((*a)->back)
+		{
+			(*a) = (*a)->back;
+			free((*a)->next);
+		}
+		free((*a));
 	}
-	free((*a));
 	free(a);
 }
