@@ -38,15 +38,19 @@ $(DIR_FT_PRINTF)/$(FT_PRINTF):
 	@make -C $(DIR_FT_PRINTF)
 
 $(NAME): $(OBJS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
-	gcc -o $@ $(OBJS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
+	@gcc -o $@ $(OBJS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
 	@echo "$(GREEN)CREATE push_swap $(RESET)"
+
+d: $(SRCS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
+	gcc -g3 -o debug $(SRCS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
+	@echo "$(GREEN)DEBUG$(RESET)"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@make -s clean -C $(DIR_FT_PRINTF)
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) debug*
 	@echo "$(RED)REMOVE OBJECTS Push_swap$(RESET)\n"
 
 fclean:	clean
