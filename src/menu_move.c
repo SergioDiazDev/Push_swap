@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:45:46 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 16:09:59 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:55:30 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	menu(t_stack **a, t_stack **b)
 	while (42)
 	{
 		ft_printf("   Stack A\n");
-		ft_reload_stack(a);
+		if (*a)
+			ft_reload_stack(a);
 		ft_printf("   Stack B\n");
-		ft_reload_stack(b);
+		if (*b)
+			ft_reload_stack(b);
 		ft_printf("1 pa\n");
 		ft_printf("2 pb\n");
 		ft_printf("3 sa\n");
@@ -38,43 +40,43 @@ void	menu(t_stack **a, t_stack **b)
 		{
 			case '1':
 				ft_push(a, b);
-				break;
+				break ;
 			case '2':
 				ft_push(b, a);
-				break;
+				break ;
 			case '3':
 				ft_swap(a);
-				break;
+				break ;
 			case '4':
 				ft_swap(b);
-				break;
+				break ;
 			case '5':
 				ft_swap(a);
 				ft_swap(b);
-				break;
+				break ;
 			case '6':
 				ft_rotate(a);
-				break;
+				break ;
 			case '7':
 				ft_rotate(b);
-				break;
+				break ;
 			case '8':
 				ft_rotate(a);
 				ft_rotate(b);
-				break;
+				break ;
 			case '9':
 				ft_reverse_rotate(a);
-				break;
+				break ;
 			case '0':
 				ft_reverse_rotate(b);
-				break;
+				break ;
 			case 'p':
 				ft_reverse_rotate(a);
 				ft_reverse_rotate(b);
-				break;
+				break ;
 			default:
 				ft_printf("Error\n");
-				break;
+				break ;
 		}
 	}
 }

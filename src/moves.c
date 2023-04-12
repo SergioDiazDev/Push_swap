@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 15:40:07 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:02:20 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,32 @@ void	ft_push(t_stack **origin, t_stack **dest)
 {
 	t_stack	*temp;
 
-	while ((*origin)->back)
-		*origin = (*origin)->back;
-	temp = *origin;
-	ft_t_stack_new(dest, (*origin)->value);
-	if (!(*origin)->next)
+	if (*origin)
 	{
-		ft_printf("ULTIMO");
-		(*origin) = NULL;
+		while ((*origin)->back)
+			*origin = (*origin)->back;
+		temp = *origin;
+		if (!(*origin)->next)
+			*origin = NULL;
+		else
+			*origin = (*origin)->next;
+		if (!*dest)
+		{
+			(*origin)->back = NULL;
+			*dest = temp;
+			(*dest)->next = NULL;
+			(*dest)->back = NULL;
+		}
+		else
+		{
+			while ((*dest)->back)
+				*dest = (*dest)->back;
+			if (*origin)
+				(*origin)->back = NULL;
+			(*dest)->back = temp;
+			temp->next = *dest;
+		}
 	}
-	else
-	{
-		*origin = (*origin)->next;
-		(*origin)->back = NULL;
-	}
-	free(temp);
 }
 
 void	ft_rotate(t_stack **origin)
