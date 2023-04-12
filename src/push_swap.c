@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	**a;
 	t_stack	**b;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a || !b)
@@ -28,10 +28,7 @@ int	main(int argc, char **argv)
 		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	ft_printf("   Stack A\n");
-	ft_reload_stack(a);
-	ft_printf("   Stack B\n");
-	ft_reload_stack(b);
+	menu(a, b);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);

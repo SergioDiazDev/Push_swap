@@ -54,4 +54,6 @@ void	ft_push(t_stack **origin, t_stack **dest);
 void	ft_rotate(t_stack **origin);
 void	ft_reverse_rotate(t_stack **origin);
 void	ft_swap(t_stack **origin);
+//menu
+void	menu(t_stack **a, t_stack **b);
 #endif
