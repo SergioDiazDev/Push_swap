@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 15:33:43 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:40:07 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_rotate(t_stack **origin)
 	if (*origin)
 	{
 		while ((*origin)->back)
-		*origin = (*origin)->back;
+			*origin = (*origin)->back;
 		temp = *origin;
 		*origin = (*origin)->next;
 		(*origin)->back = NULL;
@@ -71,8 +71,13 @@ void	ft_reverse_rotate(t_stack **origin)
 	}
 }
 
-void	ft_swap(t_stack **origin, t_stack **dest)
+void	ft_swap(t_stack **origin)
 {
-	(void) origin;
-	(void) dest;
+	int	temp;
+
+	while ((*origin)->back)
+		*origin = (*origin)->back;
+	temp = (*origin)->value;
+	(*origin)->value = (*origin)->next->value;
+	(*origin)->next->value = temp;
 }

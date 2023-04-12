@@ -53,5 +53,5 @@ void	visualicer_stack(t_stack **stack);
 void	ft_push(t_stack **origin, t_stack **dest);
 void	ft_rotate(t_stack **origin);
 void	ft_reverse_rotate(t_stack **origin);
-void	ft_swap(t_stack **origin, t_stack **dest);
+void	ft_swap(t_stack **origin);
 #endif
