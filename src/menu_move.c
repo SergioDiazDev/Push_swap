@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:45:46 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 16:55:30 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:31:35 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	menu(t_stack **a, t_stack **b)
 {
 	char	op;
 
-	while (42)
+	op = 'z';
+	while (op != 'x')
 	{
 		ft_printf("   Stack A\n");
 		if (*a)

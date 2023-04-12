@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	**a;
 	t_stack	**b;
 
-	//atexit(ft_leaks);
+	atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a || !b)
