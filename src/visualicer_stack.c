@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:00:00 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/13 15:52:10 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:00:24 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	visualicer_stack(t_stack **stack)
 		ft_reload_stack(stack, 'b');
 		while ((*stack)->next)
 		{
-			ft_printf("a->value:(%d)\n", (*stack)->value);
+			printf("a->value:(%ld)\n", (*stack)->value);
 			ft_printf("a->index:(%d)\n", (*stack)->index);
 			ft_printf("a->next:(%p)\n", (*stack)->next);
 			ft_printf("a->back:(%p)\n\n", (*stack)->back);
@@ -27,7 +27,7 @@ void	visualicer_stack(t_stack **stack)
 		}
 		if (stack)
 		{
-			ft_printf("a->value:(%d)\n", (*stack)->value);
+			printf("a->value:(%ld)\n", (*stack)->value);
 			ft_printf("a->index:(%d)\n", (*stack)->index);
 			ft_printf("a->next:(%p)\n", (*stack)->next);
 			ft_printf("a->back:(%p)\n\n", (*stack)->back);

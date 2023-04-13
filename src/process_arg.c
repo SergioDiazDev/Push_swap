@@ -29,10 +29,15 @@ void	ft_procces_stack_one(t_stack **a, char **argv)
 		ft_t_stack_new(a, ft_atoi(argv[i]));
 }
 
-t_stack	*ft_t_stack_new(t_stack **a, int value)
+t_stack	*ft_t_stack_new(t_stack **a, long value)
 {
 	t_stack	*new;
 
+	if (value == 2147483647)
+	{
+		printf("Error\n");
+		exit(0);
+	}
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
 		return (NULL);

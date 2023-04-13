@@ -23,12 +23,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*back;
 	int				index;
-	int				value;
+	long			value;
 }t_stack;
 
 //Prototypes
 //ft_atoi.c
-int		ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 int		ft_space(char c);
 int		ft_isdigit(int c);
 long	ft_conum(const char *str, int i);
@@ -39,7 +39,7 @@ int		ft_count_sep(char *str, int sep);
 //process_arg.c
 void	ft_procces_stack(t_stack **a, int argc, char **argv);
 void	ft_procces_stack_one(t_stack **a, char **argv);
-t_stack	*ft_t_stack_new(t_stack **a, int value);
+t_stack	*ft_t_stack_new(t_stack **a, long value);
 void	ft_reload_stack(t_stack **a, char next_back);
 //push_swap_utils.c
 void	*ft_calloc(int nmemb, int size);

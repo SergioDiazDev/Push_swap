@@ -6,14 +6,14 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 12:20:20 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/11 12:53:57 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:02:48 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		signo;
@@ -30,7 +30,7 @@ int	ft_atoi(const char *str)
 	else if (str[i] == '+')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-		return (0);
+		return (-2147483647);
 	return ((ft_conum(str, i) * signo));
 }
 
@@ -55,9 +55,13 @@ long	ft_conum(const char *str, int i)
 	num = 0;
 	while (ft_isdigit(str[i]))
 	{
+		if (!ft_isdigit(str[i]))
+			return (2147483647);
 		num += (str[i] - '0');
 		num *= 10;
 		i++;
 	}
+	if (i <= 1 && !num)
+		return (2147483647);
 	return (num / 10);
 }
