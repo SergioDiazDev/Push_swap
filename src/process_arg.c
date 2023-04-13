@@ -45,12 +45,14 @@ t_stack	*ft_t_stack_new(t_stack **a, int value)
 	return (new);
 }
 
-void	ft_reload_stack(t_stack **a)
+void	ft_reload_stack(t_stack **a, char next_back)
 {
-	if (*a)
-	{
+	if (!*a)
+		return ;
+	if (next_back == 'b')
 		while ((*a)->back)
 			(*a) = (*a)->back;
-		visualicer_stack(a);
-	}
+	if (next_back == 'n')
+		while ((*a)->next)
+			(*a) = (*a)->next;
 }

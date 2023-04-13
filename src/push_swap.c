@@ -43,8 +43,7 @@ void	ft_free_stack(t_stack **a)
 {
 	if (*a)
 	{
-		while ((*a)->next)
-			(*a) = (*a)->next;
+		ft_reload_stack(a, 'n');
 		while ((*a)->back)
 		{
 			(*a) = (*a)->back;

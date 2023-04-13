@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:45:46 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 17:31:35 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:54:36 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	menu(t_stack **a, t_stack **b)
 	{
 		ft_printf("   Stack A\n");
 		if (*a)
-			ft_reload_stack(a);
+			visualicer_stack(a);
 		ft_printf("   Stack B\n");
 		if (*b)
-			ft_reload_stack(b);
+			visualicer_stack(b);
 		ft_printf("1 pa\n");
 		ft_printf("2 pb\n");
 		ft_printf("3 sa\n");

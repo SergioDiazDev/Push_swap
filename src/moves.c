@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/12 17:27:29 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:53:54 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	ft_push(t_stack **origin, t_stack **dest)
 
 	if (!*origin)
 		return ;
-	while ((*origin)->back)
-		*origin = (*origin)->back;
+	ft_reload_stack(origin, 'b');
 	temp = *origin;
 	if (!(*origin)->next)
 		*origin = NULL;
@@ -34,8 +33,7 @@ void	ft_push(t_stack **origin, t_stack **dest)
 	}
 	else
 	{
-		while ((*dest)->back)
-			*dest = (*dest)->back;
+		ft_reload_stack(dest, 'b');
 		(*dest)->back = temp;
 		temp->next = *dest;
 	}
@@ -49,13 +47,11 @@ void	ft_rotate(t_stack **origin)
 		return ;
 	if ((*origin)->next || (*origin)->back)
 	{
-		while ((*origin)->back)
-			*origin = (*origin)->back;
+		ft_reload_stack(origin, 'b');
 		temp = *origin;
 		*origin = (*origin)->next;
 		(*origin)->back = NULL;
-		while ((*origin)->next)
-			*origin = (*origin)->next;
+		ft_reload_stack(origin, 'n');
 		temp->next = NULL;
 		temp->back = *origin;
 		(*origin)->next = temp;
@@ -70,14 +66,12 @@ void	ft_reverse_rotate(t_stack **origin)
 		return ;
 	if ((*origin)->next || (*origin)->back)
 	{
-		while ((*origin)->next)
-			*origin = (*origin)->next;
+		ft_reload_stack(origin, 'n');
 		temp = *origin;
 		*origin = (*origin)->back;
 		(*origin)->next = NULL;
 		temp->back = NULL;
-		while ((*origin)->back)
-			*origin = (*origin)->back;
+		ft_reload_stack(origin, 'b');
 		(*origin)->back = temp;
 		temp->next = *origin;
 	}
@@ -91,8 +85,7 @@ void	ft_swap(t_stack **origin)
 		return ;
 	if ((*origin)->next || (*origin)->back)
 	{
-		while ((*origin)->back)
-			*origin = (*origin)->back;
+		ft_reload_stack(origin, 'b');
 		temp = (*origin)->value;
 		(*origin)->value = (*origin)->next->value;
 		(*origin)->next->value = temp;
