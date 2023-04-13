@@ -28,7 +28,8 @@ int	main(int argc, char **argv)
 		ft_procces_stack_one(a, ft_split(argv[1], ' '));
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	menu(a, b);
+	//menu(a, b);
+	ft_stack_index(a);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);
