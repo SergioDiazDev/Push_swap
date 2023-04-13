@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (write(1, "Error\n", 7));
 	else if (argc == 2)
-		ft_printf("[NO IMPLEMENTADO]argv[1]:%s\n", argv[1]);
+		ft_procces_stack_one(a, ft_split(argv[1], ' '));
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
 	menu(a, b);

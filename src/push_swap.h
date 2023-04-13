@@ -38,6 +38,7 @@ char	*ft_split_2(char *str, char sep, int init, int size);
 int		ft_count_sep(char *str, int sep);
 //process_arg.c
 void	ft_procces_stack(t_stack **a, int argc, char **argv);
+void	ft_procces_stack_one(t_stack **a, char **argv);
 t_stack	*ft_t_stack_new(t_stack **a, int value);
 void	ft_reload_stack(t_stack **a);
 //push_swap_utils.c

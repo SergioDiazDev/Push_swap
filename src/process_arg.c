@@ -18,6 +18,17 @@ void	ft_procces_stack(t_stack **a, int argc, char **argv)
 		ft_t_stack_new(a, ft_atoi(argv[argc]));
 }
 
+void	ft_procces_stack_one(t_stack **a, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	while (--i != -1)
+		ft_t_stack_new(a, ft_atoi(argv[i]));
+}
+
 t_stack	*ft_t_stack_new(t_stack **a, int value)
 {
 	t_stack	*new;
