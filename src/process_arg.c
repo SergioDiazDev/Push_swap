@@ -26,7 +26,11 @@ void	ft_procces_stack_one(t_stack **a, char **argv)
 	while (argv[++i])
 		;
 	while (--i != -1)
+	{
 		ft_t_stack_new(a, ft_atoi(argv[i]));
+		free(argv[i]);
+	}
+	free(argv);
 }
 
 t_stack	*ft_t_stack_new(t_stack **a, long value)
