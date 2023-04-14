@@ -33,12 +33,12 @@ t_stack	*ft_t_stack_new(t_stack **a, long value)
 {
 	t_stack	*new;
 
-	if (value == 2147483647)
+	if (value == -2147483647)
 	{
 		printf("Error\n");
 		exit(0);
 	}
-	new = (t_stack *)malloc(sizeof(t_stack));
+	new = (t_stack *)ft_calloc(sizeof(t_stack), 1);
 	if (new == NULL)
 		return (NULL);
 	new->back = NULL;

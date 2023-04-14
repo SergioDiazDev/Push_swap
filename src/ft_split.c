@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:28:37 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/13 15:31:00 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:52:33 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_split(char *str, char sep)
 	char	**result;
 
 	word = ft_count_sep(str, sep);
-	result = ft_calloc(sizeof(char **), word + 1);
+	result = ft_calloc(sizeof(char **), word + 2);
 	if (!result)
 		return (NULL);
 	init = 0;
@@ -31,8 +31,10 @@ char	**ft_split(char *str, char sep)
 		while (str[init] == sep)
 			init++;
 		end = init + 1;
-		while (str[end] != sep)
+		while (str[end] != sep && str[end])
 			end++;
+		if (!str[end - 1])
+			return (result);
 		result[i] = ft_split_2(str, sep, init, end - init);
 		init = end;
 	}
@@ -46,9 +48,9 @@ char	*ft_split_2(char *str, char sep, int init, int size)
 
 	j = -1;
 	result = ft_calloc(sizeof(char *), (size) + 1);
-	while (str[init] != sep)
+	while (str[init] != sep && str[++j])
 	{
-		result[++j] = str[init];
+		result[j] = str[init];
 		init++;
 	}
 	result[init] = 0;
