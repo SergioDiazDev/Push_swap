@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 //Includes
 # include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include "../ft_printf/ft_printf.h"
 //structs
@@ -28,7 +28,7 @@ typedef struct s_stack
 
 //Prototypes
 //ft_atoi.c
-long		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_space(char c);
 int		ft_isdigit(int c);
 long	ft_conum(const char *str, int i);
@@ -58,5 +58,5 @@ void	ft_swap(t_stack **origin);
 //menu
 void	menu(t_stack **a, t_stack **b);
 //next_move
-void    ft_stack_index(t_stack ** a);
+void	ft_stack_index(t_stack **a);
 #endif
