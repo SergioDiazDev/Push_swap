@@ -25,12 +25,8 @@ void	ft_procces_stack_one(t_stack **a, char **argv)
 	i = -1;
 	while (argv[++i])
 		;
-	while (--i != -1)
-	{
-		ft_t_stack_new(a, ft_atoi(argv[i]));
-		free(argv[i]);
-	}
-	free(argv);
+	while (--i != -1 && ft_t_stack_new(a, ft_atoi(argv[i])))
+		;
 }
 
 t_stack	*ft_t_stack_new(t_stack **a, long value)
@@ -40,7 +36,7 @@ t_stack	*ft_t_stack_new(t_stack **a, long value)
 	if (value == -2147483647)
 	{
 		printf("Error\n");
-		exit(0);
+		return (NULL);
 	}
 	new = (t_stack *)ft_calloc(sizeof(t_stack), 1);
 	if (new == NULL)

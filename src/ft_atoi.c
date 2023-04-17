@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 12:20:20 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/14 13:07:59 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:41:11 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ long	ft_conum(const char *str, int i)
 		num *= 10;
 		i++;
 	}
-	if (i <= 1 && !num)
+	if (i < 1 && !num)
 		return (-2147483647);
 	return (num / 10);
 }

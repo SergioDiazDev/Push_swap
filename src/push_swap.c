@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
+	char	**split;
+	int		i;
 
 	atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
@@ -25,11 +27,17 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (write(1, "Error\n", 7));
 	else if (argc == 2)
-		ft_procces_stack_one(a, ft_split(argv[1], ' '));
+	{
+		split = ft_split(argv[1], ' ');
+		ft_procces_stack_one(a, split);
+		i = -1;
+		while (split[++i])
+			free(split[i]);
+		free(split);
+	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	menu(a, b);
-	ft_stack_index(a);
+	//menu(a, b);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);
@@ -42,6 +50,8 @@ void	ft_leaks(void)
 
 void	ft_free_stack(t_stack **a)
 {
+	if (!a)
+		return ;
 	if (*a)
 	{
 		ft_reload_stack(a, 'n');
@@ -50,7 +60,7 @@ void	ft_free_stack(t_stack **a)
 			(*a) = (*a)->back;
 			free((*a)->next);
 		}
-		free((*a));
+		free(*a);
 	}
 	free(a);
 }
