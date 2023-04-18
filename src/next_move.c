@@ -12,17 +12,27 @@
 
 #include "push_swap.h"
 
-void	ft_stack_index(t_stack **a)
+void	ft_stack_index(t_stack **a, int index)
 {
 	int	min;
 
 	ft_reload_stack(a, 'b');
+	while ((*a)->value != -1 && (*a)->next)
+		*a = (*a)->next;
 	min = (*a)->value;
+	ft_reload_stack(a, 'b');
 	while ((*a)->next)
 	{
-		if (min > (*a)->next->value)
+		if (min > (*a)->next->value && (*a)->next->index == -1)
 			min = (*a)->next->value;
 		*a = (*a)->next;
 	}
-	printf("min:%d\n", min);
+	ft_reload_stack(a, 'b');
+	while ((*a)->next)
+	{
+		if (min == (*a)->value)
+			(*a)->index = index;
+		*a = (*a)->next;
+	}
+	//printf("min:%d\n", min);
 }

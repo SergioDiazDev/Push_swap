@@ -44,6 +44,7 @@ t_stack	*ft_t_stack_new(t_stack **a, long value)
 	new->back = NULL;
 	new->next = *a;
 	new->value = value;
+	new->index = -1;
 	if (*a != NULL)
 		(*a)->back = new;
 	*a = new;

@@ -58,5 +58,5 @@ void	ft_swap(t_stack **origin);
 //menu
 void	menu(t_stack **a, t_stack **b);
 //next_move
-void	ft_stack_index(t_stack **a);
+void	ft_stack_index(t_stack **a, int index);
 #endif
