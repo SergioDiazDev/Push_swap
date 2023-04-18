@@ -37,10 +37,9 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	ft_stack_index(a, 1);
-	ft_stack_index(a, 2);
-	ft_stack_index(a, 3);
-	ft_stack_index(a, 4);
+	i = -1;
+	while (ft_stack_index(a, ++i))
+		;
 	menu(a, b);
 	ft_free_stack(a);
 	ft_free_stack(b);

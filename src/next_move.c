@@ -12,14 +12,16 @@
 
 #include "push_swap.h"
 
-void	ft_stack_index(t_stack **a, int index)
+int	ft_stack_index(t_stack **a, int index)
 {
 	int	min;
 
 	ft_reload_stack(a, 'b');
-	while ((*a)->value != -1 && (*a)->next)
-		*a = (*a)->next;
+	while ((*a)->index != -1 && (*a)->next)
+		(*a) = (*a)->next;
 	min = (*a)->value;
+	if ((*a)->index != -1)
+		return (0);
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
 	{
@@ -28,11 +30,13 @@ void	ft_stack_index(t_stack **a, int index)
 		*a = (*a)->next;
 	}
 	ft_reload_stack(a, 'b');
+	if (min == (*a)->value)
+		(*a)->index = index;
 	while ((*a)->next)
 	{
-		if (min == (*a)->value)
-			(*a)->index = index;
+		if (min == (*a)->next->value)
+			(*a)->next->index = index;
 		*a = (*a)->next;
 	}
-	//printf("min:%d\n", min);
+	return (1);
 }
