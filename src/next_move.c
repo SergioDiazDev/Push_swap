@@ -34,25 +34,25 @@ int	ft_stack_index(t_stack **a, int index)
 		}
 		*a = (*a)->next;
 	}
+	return (ft_stack_index2(a, index, min, dir));
+}
+
+int	ft_stack_index2(t_stack **a, int index, int min, t_stack *dir)
+{
 	ft_reload_stack(a, 'b');
 	if (min == (*a)->value)
+	{
+		if (min == (*a)->value && (*a) != dir)
+			return (-2);
 		(*a)->index = index;
+	}
 	while ((*a)->next)
 	{
 		if (min == (*a)->next->value)
 			(*a)->next->index = index;
-		*a = (*a)->next;
-	}
-	///
-	ft_reload_stack(a, 'b');
-	while ((*a)->next)
-	{
-		if (min == (*a)->value && (*a) != dir)
+		if (min == (*a)->next->value && (*a)->next != dir)
 			return (-2);
 		*a = (*a)->next;
 	}
-	if (min == (*a)->value && (*a) != dir)
-		return (-2);
-	///
 	return (index + 1);
 }
