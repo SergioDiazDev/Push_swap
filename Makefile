@@ -50,7 +50,7 @@ d: $(SRCS) $(DIR_FT_PRINTF)/$(FT_PRINTF)
 
 clean:
 	@make -s clean -C $(DIR_FT_PRINTF)
-	@$(RM) $(OBJS) debug*
+	@$(RM) $(OBJS) debug* push_swap.dSYM
 	@echo "$(RED)REMOVE OBJECTS Push_swap$(RESET)\n"
 
 fclean:	clean
