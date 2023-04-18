@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	char	**split;
 	int		i;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a || !b)
@@ -37,10 +37,14 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	i = -1;
-	while (ft_stack_index(a, ++i))
-		;
-	menu(a, b);
+	i = 0;
+	while (i >= 0)
+		i = ft_stack_index(a, i);
+	visualicer_stack(a);
+	if (i == -1)
+		return (write(1, "Error-1\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
+	if (i == -2)
+		return (write(1, "Error-2\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);

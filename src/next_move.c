@@ -14,19 +14,24 @@
 
 int	ft_stack_index(t_stack **a, int index)
 {
-	int	min;
+	int		min;
+	t_stack	*dir;
 
 	ft_reload_stack(a, 'b');
 	while ((*a)->index != -1 && (*a)->next)
 		(*a) = (*a)->next;
 	min = (*a)->value;
+	dir = (*a);
 	if ((*a)->index != -1)
-		return (0);
+		return (-1);
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
 	{
 		if (min > (*a)->next->value && (*a)->next->index == -1)
+		{
+			dir = (*a)->next;
 			min = (*a)->next->value;
+		}
 		*a = (*a)->next;
 	}
 	ft_reload_stack(a, 'b');
@@ -38,5 +43,16 @@ int	ft_stack_index(t_stack **a, int index)
 			(*a)->next->index = index;
 		*a = (*a)->next;
 	}
-	return (1);
+	///
+	ft_reload_stack(a, 'b');
+	while ((*a)->next)
+	{
+		if (min == (*a)->value && (*a) != dir)
+			return (-2);
+		*a = (*a)->next;
+	}
+	if (min == (*a)->value && (*a) != dir)
+		return (-2);
+	///
+	return (index + 1);
 }
