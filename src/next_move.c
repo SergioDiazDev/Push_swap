@@ -63,13 +63,29 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 	ft_reload_stack(b, 'b');
 	if (!*a)
 		return (-2);
-	printf("Ñ\n");
 	if ((*a)->index == index)
-		return (ft_push(a, b), index + 1);
+		return (write(1, "pa\n", 4), ft_push(a, b), index + 1);
 	if ((*a)->next->index == index)
-		return (ft_swap(a), ft_push(a, b), index + 1);
+		return (write(1, "sa\n", 4), ft_swap(a), write(1, "pa\n", 4),
+			ft_push(a, b), index + 1);
 	ft_reload_stack(a, 'n');
 	if ((*a)->index == index)
-		return (ft_reverse_rotate(a), ft_push(a, b), index + 1);
-	return (ft_rotate(a), index);
+		return (write(1, "rra\n", 5), ft_reverse_rotate(a), write(1, "pa\n", 4),
+			ft_push(a, b), index + 1);
+	return (write(1, "ra\n", 4), ft_rotate(a), index);
+}
+
+int	ft_stack_is_order(t_stack **a)
+{
+	if (!*a)
+		return (1);
+	while ((*a)->next)
+	{
+		if ((*a)->index != (*a)->next->index + 1)
+			return (0);
+		*a = (*a)->next;
+	}
+	if ((*a)->back->index != (*a)->index + 1)
+		return (0);
+	return (1);
 }

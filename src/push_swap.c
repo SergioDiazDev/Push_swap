@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 		i = ft_stack_index(a, i);
 	if (i == -2)
 		return (write(1, "Error-2\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
+	if (ft_stack_is_order(a))
+		return (0);
 	ft_printf("STACK A\n");
 	visualicer_stack(a);
 	i = 0;

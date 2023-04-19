@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/19 10:43:10 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:01:37 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_push(t_stack **origin, t_stack **dest)
 	if (!*dest)
 	{
 		*dest = temp;
-	(*dest)->next = NULL;
+		(*dest)->next = NULL;
 	}
 	else
 	{

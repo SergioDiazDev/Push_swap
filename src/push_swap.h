@@ -59,7 +59,7 @@ void	ft_swap(t_stack **origin);
 // void	menu(t_stack **a, t_stack **b);
 //next_move
 int		ft_stack_index(t_stack **a, int index);
-int		ft_stack_index2(t_stack **a, int index, int min, t_stack *dir);
+int		ft_stack_index2(t_stack **a, int index, int max, t_stack *dir);
 int		ft_next_move(t_stack **a, t_stack **b, int index);
-int		ft_stack_order(t_stack **a);
+int		ft_stack_is_order(t_stack **a);
 #endif
