@@ -44,10 +44,9 @@ int	main(int argc, char **argv)
 		return (write(1, "Error-2\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
 	ft_printf("STACK A\n");
 	visualicer_stack(a);
-	ft_next_move(a, b, 0);
-	ft_next_move(a, b, 1);
-	ft_next_move(a, b, 2);
-	ft_next_move(a, b, 3);
+	i = 0;
+	while (i >= 0)
+		i = ft_next_move(a, b, i);
 	ft_printf("\n\n\nSTACK A\n");
 	visualicer_stack(a);
 	ft_printf("STACK B\n");

@@ -60,5 +60,6 @@ void	ft_swap(t_stack **origin);
 //next_move
 int		ft_stack_index(t_stack **a, int index);
 int		ft_stack_index2(t_stack **a, int index, int min, t_stack *dir);
-int	ft_next_move(t_stack **a, t_stack **b, int index);
+int		ft_next_move(t_stack **a, t_stack **b, int index);
+int		ft_stack_order(t_stack **a);
 #endif

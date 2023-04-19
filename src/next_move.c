@@ -61,22 +61,15 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 {
 	ft_reload_stack(a, 'b');
 	ft_reload_stack(b, 'b');
+	if (!*a)
+		return (-2);
 	if ((*a)->index == index)
-		ft_push(a, b);
-	else if ((*a)->next->index == index)
-	{
-		ft_swap(a);
-		ft_push(a, b);
-		ft_printf("holaaaaa\n");
-	}
-	else
-	{
-		ft_reload_stack(a, 'n');
-		if ((*a)->index == index)
-		{
-			ft_reverse_rotate(a);
-			ft_push(a, b);
-		}
-	}
-	return (0);
+		return (ft_push(a, b), index + 1);
+	if ((*a)->next->index == index)
+		return (ft_swap(a), ft_push(a, b), index + 1);
+	ft_reload_stack(a, 'n');
+	if ((*a)->index == index)
+		return (ft_reverse_rotate(a), ft_push(a, b), index + 1);
+	printf("Ñ\n");
+	return (index + 1);
 }
