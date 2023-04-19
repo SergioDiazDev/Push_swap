@@ -77,6 +77,7 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 
 int	ft_stack_is_order(t_stack **a)
 {
+	ft_reload_stack(a, 'b');
 	if (!*a)
 		return (1);
 	while ((*a)->next)
