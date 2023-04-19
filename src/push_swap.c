@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	**b;
 	char	**split;
 	int		i;
+	int		j;
 
 	//atexit(ft_leaks);
 	b = (t_stack **)malloc(sizeof(t_stack *));
@@ -37,6 +38,7 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
+	////////////////////////////
 	i = 0;
 	while (i >= 0)
 		i = ft_stack_index(a, i);
@@ -46,13 +48,20 @@ int	main(int argc, char **argv)
 		return (0);
 	// ft_printf("STACK A\n");
 	// visualicer_stack(a);
+	j = 1;
+	ft_reload_stack(a, 'b');
+	while ((*a)->next)
+	{
+		j++;
+		*a = (*a)->next;
+	}
 	i = 0;
-	while (i >= 0)
+	while (i < (j / 2))
 		i = ft_next_move(a, b, i);
-	// ft_printf("\n\n\nSTACK A\n");
-	// visualicer_stack(a);
-	// ft_printf("STACK B\n");
-	// visualicer_stack(b);
+	ft_printf("\n\n\nSTACK A\n");
+	visualicer_stack(a);
+	ft_printf("STACK B\n");
+	visualicer_stack(b);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);
