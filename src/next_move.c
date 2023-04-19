@@ -64,13 +64,13 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 	if (!*a)
 		return (-2);
 	if ((*a)->index == index)
-		return (write(1, "pa\n", 4), ft_push(a, b), index + 1);
+		return (write(1, "pb\n", 4), ft_push(a, b), index + 1);
 	if ((*a)->next->index == index)
-		return (write(1, "sa\n", 4), ft_swap(a), write(1, "pa\n", 4),
+		return (write(1, "sa\n", 4), ft_swap(a), write(1, "pb\n", 4),
 			ft_push(a, b), index + 1);
 	ft_reload_stack(a, 'n');
 	if ((*a)->index == index)
-		return (write(1, "rra\n", 5), ft_reverse_rotate(a), write(1, "pa\n", 4),
+		return (write(1, "rra\n", 5), ft_reverse_rotate(a), write(1, "pb\n", 4),
 			ft_push(a, b), index + 1);
 	return (write(1, "ra\n", 4), ft_rotate(a), index);
 }
