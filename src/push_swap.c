@@ -45,6 +45,9 @@ int	main(int argc, char **argv)
 	ft_printf("STACK A\n");
 	visualicer_stack(a);
 	ft_next_move(a, b, 0);
+	ft_next_move(a, b, 1);
+	ft_next_move(a, b, 2);
+	ft_next_move(a, b, 3);
 	ft_printf("\n\n\nSTACK A\n");
 	visualicer_stack(a);
 	ft_printf("STACK B\n");

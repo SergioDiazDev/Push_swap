@@ -69,5 +69,14 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 		ft_push(a, b);
 		ft_printf("holaaaaa\n");
 	}
+	else
+	{
+		ft_reload_stack(a, 'n');
+		if ((*a)->index == index)
+		{
+			ft_reverse_rotate(a);
+			ft_push(a, b);
+		}
+	}
 	return (0);
 }

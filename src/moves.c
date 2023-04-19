@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/19 10:34:39 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:43:10 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void	ft_swap(t_stack **origin)
 	if ((*origin)->next || (*origin)->back)
 	{
 		ft_reload_stack(origin, 'b');
-		temp_index = (*origin)->value;
+		temp_index = (*origin)->index;
 		temp_value = (*origin)->value;
 		(*origin)->index = (*origin)->next->index;
 		(*origin)->value = (*origin)->next->value;
-		(*origin)->next->value = temp_index;
+		(*origin)->next->index = temp_index;
 		(*origin)->next->value = temp_value;
 	}
 }
