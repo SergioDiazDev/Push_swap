@@ -56,3 +56,18 @@ int	ft_stack_index2(t_stack **a, int index, int min, t_stack *dir)
 	}
 	return (index + 1);
 }
+
+int	ft_next_move(t_stack **a, t_stack **b, int index)
+{
+	ft_reload_stack(a, 'b');
+	ft_reload_stack(b, 'b');
+	if ((*a)->index == index)
+		ft_push(a, b);
+	else if ((*a)->next->index == index)
+	{
+		ft_swap(a);
+		ft_push(a, b);
+		ft_printf("holaaaaa\n");
+	}
+	return (0);
+}

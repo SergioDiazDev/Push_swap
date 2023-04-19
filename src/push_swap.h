@@ -55,9 +55,10 @@ void	ft_push(t_stack **origin, t_stack **dest);
 void	ft_rotate(t_stack **origin);
 void	ft_reverse_rotate(t_stack **origin);
 void	ft_swap(t_stack **origin);
-//menu
-void	menu(t_stack **a, t_stack **b);
+// //menu
+// void	menu(t_stack **a, t_stack **b);
 //next_move
 int		ft_stack_index(t_stack **a, int index);
 int		ft_stack_index2(t_stack **a, int index, int min, t_stack *dir);
+int	ft_next_move(t_stack **a, t_stack **b, int index);
 #endif

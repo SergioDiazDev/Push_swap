@@ -40,11 +40,15 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i >= 0)
 		i = ft_stack_index(a, i);
-	visualicer_stack(a);
-	if (i == -1)
-		return (write(1, "Error-1\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
 	if (i == -2)
 		return (write(1, "Error-2\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
+	ft_printf("STACK A\n");
+	visualicer_stack(a);
+	ft_next_move(a, b, 0);
+	ft_printf("\n\n\nSTACK A\n");
+	visualicer_stack(a);
+	ft_printf("STACK B\n");
+	visualicer_stack(b);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);

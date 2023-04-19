@@ -24,7 +24,7 @@ RESET = `tput sgr0`
 INCLUDE			=	$(DIR_SRC)/push_swap.h
 
 SRCS			=	$(DIR_SRC)/push_swap.c $(DIR_SRC)/push_swap_utils.c $(DIR_SRC)/process_arg.c $(DIR_SRC)/ft_split.c $(DIR_SRC)/ft_atoi.c \
-					$(DIR_SRC)/visualicer_stack.c $(DIR_SRC)/moves.c $(DIR_SRC)/menu_move.c $(DIR_SRC)/next_move.c
+					$(DIR_SRC)/visualicer_stack.c $(DIR_SRC)/moves.c $(DIR_SRC)/next_move.c
 
 OBJS = $(SRCS:.c=.o)
 

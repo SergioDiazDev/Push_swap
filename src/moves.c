@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:05:52 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/13 15:53:54 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:34:39 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,19 @@ void	ft_reverse_rotate(t_stack **origin)
 
 void	ft_swap(t_stack **origin)
 {
-	int	temp;
+	int	temp_value;
+	int	temp_index;
 
 	if (!*origin)
 		return ;
 	if ((*origin)->next || (*origin)->back)
 	{
 		ft_reload_stack(origin, 'b');
-		temp = (*origin)->value;
+		temp_index = (*origin)->value;
+		temp_value = (*origin)->value;
+		(*origin)->index = (*origin)->next->index;
 		(*origin)->value = (*origin)->next->value;
-		(*origin)->next->value = temp;
+		(*origin)->next->value = temp_index;
+		(*origin)->next->value = temp_value;
 	}
 }
