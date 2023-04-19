@@ -14,43 +14,43 @@
 
 int	ft_stack_index(t_stack **a, int index)
 {
-	int		min;
+	int		max;
 	t_stack	*dir;
 
 	ft_reload_stack(a, 'b');
 	while ((*a)->index != -1 && (*a)->next)
 		(*a) = (*a)->next;
-	min = (*a)->value;
+	max = (*a)->value;
 	dir = (*a);
 	if ((*a)->index != -1)
 		return (-1);
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
 	{
-		if (min > (*a)->next->value && (*a)->next->index == -1)
+		if (max < (*a)->next->value && (*a)->next->index == -1)
 		{
 			dir = (*a)->next;
-			min = (*a)->next->value;
+			max = (*a)->next->value;
 		}
 		*a = (*a)->next;
 	}
-	return (ft_stack_index2(a, index, min, dir));
+	return (ft_stack_index2(a, index, max, dir));
 }
 
-int	ft_stack_index2(t_stack **a, int index, int min, t_stack *dir)
+int	ft_stack_index2(t_stack **a, int index, int max, t_stack *dir)
 {
 	ft_reload_stack(a, 'b');
-	if (min == (*a)->value)
+	if (max == (*a)->value)
 	{
-		if (min == (*a)->value && (*a) != dir)
+		if (max == (*a)->value && (*a) != dir)
 			return (-2);
 		(*a)->index = index;
 	}
 	while ((*a)->next)
 	{
-		if (min == (*a)->next->value)
+		if (max == (*a)->next->value)
 			(*a)->next->index = index;
-		if (min == (*a)->next->value && (*a)->next != dir)
+		if (max == (*a)->next->value && (*a)->next != dir)
 			return (-2);
 		*a = (*a)->next;
 	}
