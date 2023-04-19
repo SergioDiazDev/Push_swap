@@ -63,6 +63,7 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 	ft_reload_stack(b, 'b');
 	if (!*a)
 		return (-2);
+	printf("Ñ\n");
 	if ((*a)->index == index)
 		return (ft_push(a, b), index + 1);
 	if ((*a)->next->index == index)
@@ -70,6 +71,5 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 	ft_reload_stack(a, 'n');
 	if ((*a)->index == index)
 		return (ft_reverse_rotate(a), ft_push(a, b), index + 1);
-	printf("Ñ\n");
-	return (index + 1);
+	return (ft_rotate(a), index);
 }
