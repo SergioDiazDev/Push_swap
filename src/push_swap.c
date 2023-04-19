@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	}
 	i = 0;
 	while (i < (j / 2))
-		i = ft_next_move(a, b, i);
+		i = ft_next_move(a, b, i);//hacerlo hasta tener solo 3 sin mover
 	ft_printf("\n\n\nSTACK A\n");
 	visualicer_stack(a);
 	ft_printf("STACK B\n");

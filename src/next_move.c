@@ -90,3 +90,5 @@ int	ft_stack_is_order(t_stack **a)
 		return (0);
 	return (1);
 }
+
+//crear ft_order3
