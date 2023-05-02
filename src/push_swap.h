@@ -63,4 +63,5 @@ int		ft_stack_index2(t_stack **a, int index, int max, t_stack *dir);
 int		ft_next_move(t_stack **a, t_stack **b, int index);
 int		ft_stack_is_order(t_stack **a);
 void	ft_order3(t_stack **a);
+int	ft_push_a(t_stack **a, t_stack **b, int index);
 #endif

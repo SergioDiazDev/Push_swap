@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (0);
 	if (argc <= 1)
-		return (write(1, "Error\n", 7));
+		return (write(1, "Error\n", 6));
 	else if (argc == 2)
 	{
 		split = ft_split(argv[1], ' ');
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	while (i >= 0)
 		i = ft_stack_index(a, i);
 	if (i == -2)
-		return (write(1, "Error-2\n", 9), ft_free_stack(a), ft_free_stack(b), 0);
+		return (write(1, "Error-2\n", 8), ft_free_stack(a), ft_free_stack(b), 0);
 	if (ft_stack_is_order(a))
 		return (0);
 	// ft_printf("STACK A\n");
@@ -59,10 +59,13 @@ int	main(int argc, char **argv)
 	while (i < (j - 3))
 		i = ft_next_move(a, b, i);
 	ft_order3(a);
-	ft_printf("\n\n\nSTACK A\n");
-	visualicer_stack(a);
-	ft_printf("STACK B\n");
-	visualicer_stack(b);
+	j = j - 4;
+	while (j >= 0)
+		j = ft_push_a(a, b, j);
+	// ft_printf("\n\n\nSTACK A\n");
+	// visualicer_stack(a);
+	// ft_printf("STACK B\n");
+	// visualicer_stack(b);
 	ft_free_stack(a);
 	ft_free_stack(b);
 	return (0);
