@@ -91,4 +91,22 @@ int	ft_stack_is_order(t_stack **a)
 	return (1);
 }
 
-//crear ft_order3
+void	ft_order3(t_stack **a)
+{
+	if (ft_stack_is_order(a))
+		return ;
+	ft_reload_stack(a, 'b');
+	if ((*a)->value < (*a)->next->value)
+	{
+		write(1, "rra\n", 5);
+		ft_reverse_rotate(a);
+		if (ft_stack_is_order(a))
+			return ;
+		return ((void)write(1, "sa\n", 4), ft_swap(a));
+	}
+	if ((*a)->next->value > (*a)->next->next->value)
+		return ((void)write(1, "sa\nrra\n", 8), ft_swap(a), ft_reverse_rotate(a));
+	if ((*a)->value > (*a)->next->next->value)
+		return ((void)write(1, "ra\n", 4), ft_rotate(a));
+	return ((void)write(1, "sa\n", 4), ft_swap(a));
+}

@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i < (j - 3))
 		i = ft_next_move(a, b, i);
+	ft_order3(a);
 	ft_printf("\n\n\nSTACK A\n");
 	visualicer_stack(a);
 	ft_printf("STACK B\n");
