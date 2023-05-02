@@ -72,6 +72,27 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 	if ((*a)->index == index)
 		return (write(1, "rra\n", 4), ft_reverse_rotate(a), write(1, "pb\n", 3),
 			ft_push(a, b), index + 1);
+	int	rr;
+	int	r;
+
+	rr = 0;
+	r = 0;
+	ft_reload_stack(a, 'b');
+	while ((*a)->index != index)
+	{
+		r++;
+		*a = (*a)->next;
+	}
+	ft_reload_stack(a, 'n');
+	while ((*a)->index != index)
+	{
+		rr++;
+		*a = (*a)->back;
+	}
+	if (rr > r)
+		return (write(1, "ra\n", 3), ft_rotate(a), index);
+	else
+		return (write(1, "rra\n", 4), ft_reverse_rotate(a), index);
 	return (write(1, "ra\n", 3), ft_rotate(a), index);
 }
 
@@ -126,5 +147,51 @@ int	ft_push_a(t_stack **a, t_stack **b, int index)
 	if ((*b)->index == index)
 		return (write(1, "rrb\n", 4), ft_reverse_rotate(b), write(1, "pa\n", 3),
 			ft_push(b, a), index - 1);
+	int	rr;
+	int	r;
+
+	rr = 0;
+	r = 0;
+	ft_reload_stack(b, 'b');
+	while ((*b)->index != index)
+	{
+		r++;
+		*b = (*b)->next;
+	}
+	ft_reload_stack(b, 'n');
+	while ((*b)->index != index)
+	{
+		rr++;
+		*b = (*b)->back;
+	}
+	if (rr > r)
+		return (write(1, "rb\n", 3), ft_rotate(b), index - 1);
+	else
+		return (write(1, "rrb\n", 4), ft_reverse_rotate(b), index - 1);
 	return (write(1, "rb\n", 3), ft_rotate(b), index);
+}
+
+void	ft_rr_or_r(t_stack **a, int index)
+{
+	int	rr;
+	int	r;
+
+	rr = 0;
+	r = 0;
+	ft_reload_stack(a, 'b');
+	while ((*a)->index != index)
+	{
+		r++;
+		*a = (*a)->next;
+	}
+	ft_reload_stack(a, 'n');
+	while ((*a)->index != index)
+	{
+		rr++;
+		*a = (*a)->back;
+	}
+	if (rr < r)
+		return ((void)write(1, "rb\n", 3), ft_rotate(a));
+	else
+		return ((void)write(1, "rrb\n", 4), ft_reverse_rotate(a));
 }
