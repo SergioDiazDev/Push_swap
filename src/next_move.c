@@ -165,9 +165,9 @@ int	ft_push_a(t_stack **a, t_stack **b, int index)
 		*b = (*b)->back;
 	}
 	if (rr > r)
-		return (write(1, "rb\n", 3), ft_rotate(b), index - 1);
+		return (write(1, "rb\n", 3), ft_rotate(b), index);
 	else
-		return (write(1, "rrb\n", 4), ft_reverse_rotate(b), index - 1);
+		return (write(1, "rrb\n", 4), ft_reverse_rotate(b), index);
 	return (write(1, "rb\n", 3), ft_rotate(b), index);
 }
 

@@ -55,6 +55,23 @@ int	main(int argc, char **argv)
 		j++;
 		*a = (*a)->next;
 	}
+	// if (j <= 50)
+	// 	ft_sort_50(a, b, j);
+	// else
+		ft_sort_all(a, b, j);
+	ft_printf("\n\n\nSTACK A\n");
+	visualicer_stack(a);
+	ft_printf("STACK B\n");
+	visualicer_stack(b);
+	ft_free_stack(a);
+	ft_free_stack(b);
+	return (0);
+}
+
+void	ft_sort_50(t_stack **a, t_stack **b, int j)
+{
+	int	i;
+
 	i = 0;
 	while (i < (j - 3))
 		i = ft_next_move(a, b, i);
@@ -62,13 +79,21 @@ int	main(int argc, char **argv)
 	j = j - 4;
 	while (j >= 0)
 		j = ft_push_a(a, b, j);
-	// ft_printf("\n\n\nSTACK A\n");
-	// visualicer_stack(a);
-	// ft_printf("STACK B\n");
-	// visualicer_stack(b);
-	ft_free_stack(a);
-	ft_free_stack(b);
-	return (0);
+}
+
+void	ft_sort_all(t_stack **a, t_stack **b, int j)
+{
+	int i;
+
+	i = (j / 2) - 1;
+	while (i >= 0)
+		i = ft_push_a(b, a, i);
+	//Ordenar ambas pilas
+
+	//Ordenar ambas pilas
+	i = (j / 2) - 1;
+	while (i >= 0)
+		i = ft_push_a(a, b, i);
 }
 
 void	ft_leaks(void)

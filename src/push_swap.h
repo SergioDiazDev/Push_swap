@@ -46,6 +46,8 @@ void	*ft_calloc(int nmemb, int size);
 void	ft_bzero(void *s, int n);
 //push_swap.c
 int		main(int argc, char **argv);
+void	ft_sort_50(t_stack **a, t_stack **b, int j);
+void	ft_sort_all(t_stack **a, t_stack **b, int j);
 void	ft_leaks(void);
 void	ft_free_stack(t_stack **a);
 //visualicer_stack.c
