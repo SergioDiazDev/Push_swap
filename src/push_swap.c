@@ -21,16 +21,17 @@ int	main(int argc, char **argv)
 	int		j;
 
 	//atexit(ft_leaks);
-	b = (t_stack **)malloc(sizeof(t_stack *));
-	a = (t_stack **)malloc(sizeof(t_stack *));
-	if (!a || !b)
-		return (0);
 	if (argc <= 1)
-		return (write(1, "Error\n", 6));
-	else if (argc == 2)
+		return (0);
+	a = (t_stack **)malloc(sizeof(t_stack *));
+	if (!a)
+		return (0);
+	if (argc == 2)
 	{
 		split = ft_split(argv[1], ' ');
 		ft_procces_stack_one(a, split);
+		if (!split)
+			return (write(1, "Error\n", 6), ft_free_stack(a), 0);
 		i = -1;
 		while (split[++i])
 			free(split[i]);
@@ -38,16 +39,15 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
-	////////////////////////////
+	if (!a)
+		return (write(1, "Error\n", 6), 0);
 	i = 0;
 	while (i >= 0)
 		i = ft_stack_index(a, i);
 	if (i == -2)
-		return (write(1, "Error-2\n", 8), ft_free_stack(a), ft_free_stack(b), 0);
+		return (write(1, "Error\n", 6), ft_free_stack(a), 0);
 	if (ft_stack_is_order(a))
-		return (0);
-	// ft_printf("STACK A\n");
-	// visualicer_stack(a);
+		return (ft_free_stack(a), 0);
 	j = 1;
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
@@ -55,17 +55,14 @@ int	main(int argc, char **argv)
 		j++;
 		*a = (*a)->next;
 	}
+	b = (t_stack **)malloc(sizeof(t_stack *));
+	if (!b)
+		return (0);
 	if (j <= 50)
 		ft_sort_50(a, b, j);
 	else
 		ft_sort_all(a, b, j);
-	// ft_printf("\n\n\nSTACK A\n\n");
-	// visualicer_stack(a);
-	// ft_printf("STACK B\n\n");
-	// visualicer_stack(b);
-	// ft_free_stack(a);
-	// ft_free_stack(b);
-	return (0);
+	return (ft_free_stack(a), ft_free_stack(b), 0);
 }
 
 void	ft_sort_50(t_stack **a, t_stack **b, int j)
@@ -101,7 +98,6 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 			ft_rotate(a);
 		}
 	}
-	//Ordenar ambas pilas
 	i = j - 1;
 	ft_reload_stack(a, 'b');
 	ft_reload_stack(b, 'b');
@@ -111,7 +107,6 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 	ft_order3(a);
 	while (i >= 0)
 		i = ft_push_a(a, b, i);
-	//Ordenar ambas pilas
 }
 
 void	ft_leaks(void)

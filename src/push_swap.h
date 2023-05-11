@@ -39,7 +39,7 @@ int		ft_count_sep(char *str, int sep);
 //process_arg.c
 void	ft_procces_stack(t_stack **a, int argc, char **argv);
 void	ft_procces_stack_one(t_stack **a, char **argv);
-t_stack	*ft_t_stack_new(t_stack **a, long value);
+t_stack	*ft_stack_new(t_stack **a, long value);
 void	ft_reload_stack(t_stack **a, char next_back);
 //push_swap_utils.c
 void	*ft_calloc(int nmemb, int size);
@@ -67,5 +67,5 @@ int		ft_stack_is_order(t_stack **a);
 void	ft_order3(t_stack **a);
 int		ft_push_a(t_stack **a, t_stack **b, int index);
 void	ft_rr_or_r(t_stack **b, int index);
-int	ft_next_move_menos(t_stack **a, t_stack **b, int index);
+int		ft_next_move_menos(t_stack **a, t_stack **b, int index);
 #endif

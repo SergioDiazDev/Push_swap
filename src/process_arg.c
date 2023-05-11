@@ -14,8 +14,8 @@
 
 void	ft_procces_stack(t_stack **a, int argc, char **argv)
 {
-	while (--argc != 0)
-		ft_t_stack_new(a, ft_atoi(argv[argc]));
+	while (--argc != 0 && a)
+		ft_stack_new(a, ft_atoi(argv[argc]));
 }
 
 void	ft_procces_stack_one(t_stack **a, char **argv)
@@ -25,19 +25,16 @@ void	ft_procces_stack_one(t_stack **a, char **argv)
 	i = -1;
 	while (argv[++i])
 		;
-	while (--i != -1 && ft_t_stack_new(a, ft_atoi(argv[i])))
+	while (--i != -1 && ft_stack_new(a, ft_atoi(argv[i])))
 		;
 }
 
-t_stack	*ft_t_stack_new(t_stack **a, long value)
+t_stack	*ft_stack_new(t_stack **a, long value)
 {
 	t_stack	*new;
 
-	if (value == -2147483647)
-	{
-		printf("Error\n");
-		return (NULL);
-	}
+	if (value <= -2147483647 || value >= 2147483648)
+		return (write(1, "Error\n", 6), ft_free_stack(a), exit(-1), NULL);
 	new = (t_stack *)ft_calloc(sizeof(t_stack), 1);
 	if (new == NULL)
 		return (NULL);
@@ -55,10 +52,10 @@ void	ft_reload_stack(t_stack **a, char next_back)
 {
 	if (!*a)
 		return ;
-	if (next_back == 'b')
+	if ((*a)->back && next_back == 'b')
 		while ((*a)->back)
 			(*a) = (*a)->back;
-	if (next_back == 'n')
+	if ((*a)->next && next_back == 'n')
 		while ((*a)->next)
 			(*a) = (*a)->next;
 }
