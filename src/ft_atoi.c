@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 12:20:20 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/17 15:41:11 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:13:38 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ long	ft_atoi(const char *str)
 	}	
 	else if (str[i] == '+')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+' || !ft_isdigit(str[i]))
 		return (-2147483647);
 	conum = ft_conum(str, i);
 	if (conum == -2147483647)
@@ -56,7 +56,7 @@ long	ft_conum(const char *str, int i)
 	long	num;
 
 	num = 0;
-	while (ft_isdigit(str[i]))
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (-2147483647);
