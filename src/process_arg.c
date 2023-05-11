@@ -34,7 +34,7 @@ t_stack	*ft_stack_new(t_stack **a, long value)
 	t_stack	*new;
 
 	if (value <= -2147483647 || value >= 2147483648)
-		return (write(1, "Error\n", 6), ft_free_stack(a), exit(-1), NULL);
+		return (ft_printf("Error\n"), ft_free_stack(a), exit(-1), NULL);
 	new = (t_stack *)ft_calloc(sizeof(t_stack), 1);
 	if (new == NULL)
 		return (NULL);
