@@ -24,7 +24,7 @@ void	ft_procces_stack_one(t_stack **a, char **argv)
 
 	i = -1;
 	while (argv[++i])
-		ft_printf("argv[i]:%s\n", argv[i]);
+		;
 	while (--i != -1 && ft_stack_new(a, ft_atoi(argv[i])))
 		;
 }

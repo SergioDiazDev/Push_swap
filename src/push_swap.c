@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	int		i;
 	int		j;
 
+	split = NULL;
 	atexit(ft_leaks);
 	if (argc <= 1)
 		return (0);
@@ -30,12 +31,6 @@ int	main(int argc, char **argv)
 	{
 		split = ft_split(argv[1], ' ');
 		ft_procces_stack_one(a, split);
-		if (!split)
-			return (ft_printf("Error\n"), ft_free_stack(a), 0);
-		i = -1;
-		// while (split[++i])
-		//  	free(split[i]);
-		// free(split);
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
@@ -63,6 +58,13 @@ int	main(int argc, char **argv)
 		ft_sort_50(a, b, j);
 	else
 		ft_sort_all(a, b, j);
+	if (split)
+	{
+		i = -1;
+		while (split[++i])
+			free(split[i]);
+		free(split);
+	}
 	return (ft_free_stack(a), ft_free_stack(b), 0);
 }
 
