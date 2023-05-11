@@ -46,8 +46,6 @@ int	main(int argc, char **argv)
 		i = ft_stack_index(a, i);
 	if (i == -2)
 		return (write(1, "Error\n", 6), ft_free_stack(a), 0);
-	if (ft_stack_is_order(a))
-		return (ft_free_stack(a), 0);
 	j = 1;
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
@@ -55,6 +53,8 @@ int	main(int argc, char **argv)
 		j++;
 		*a = (*a)->next;
 	}
+	if (j == 1 || ft_stack_is_order(a))
+		return (ft_free_stack(a), 0);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	if (!b)
 		return (0);
@@ -72,6 +72,8 @@ void	ft_sort_50(t_stack **a, t_stack **b, int j)
 	i = 0;
 	while (i < (j - 3))
 		i = ft_next_move(a, b, i);
+	if (j == 2)
+		return (ft_swap(a), (void)write(1, "sa\n", 3));
 	ft_order3(a);
 	j = j - 4;
 	while (j >= 0)
