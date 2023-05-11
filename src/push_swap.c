@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		split = ft_split(argv[1], ' ');
 		ft_procces_stack_one(a, split);
 		if (!split)
-			return (write(1, "Error\n", 6), ft_free_stack(a), 0);
+			return (ft_printf("Error\n"), ft_free_stack(a), 0);
 		i = -1;
 		while (split[++i])
 			free(split[i]);
@@ -40,12 +40,12 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
 	if (!a)
-		return (write(1, "Error\n", 6), 0);
+		return (ft_printf("Error\n"), 0);
 	i = 0;
 	while (i >= 0)
 		i = ft_stack_index(a, i);
 	if (i == -2)
-		return (write(1, "Error\n", 6), ft_free_stack(a), 0);
+		return (ft_printf("Error\n"), ft_free_stack(a), 0);
 	j = 1;
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
@@ -73,7 +73,7 @@ void	ft_sort_50(t_stack **a, t_stack **b, int j)
 	while (i < (j - 3))
 		i = ft_next_move(a, b, i);
 	if (j == 2)
-		return (ft_swap(a), (void)write(1, "sa\n", 3));
+		return (ft_swap(a), (void)ft_printf("sa\n"));
 	ft_order3(a);
 	j = j - 4;
 	while (j >= 0)
@@ -90,13 +90,13 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 		ft_reload_stack(a, 'b');
 		if ((*a)->index < (j / 2))
 		{
-			write(1, "pb\n", 3);
+			ft_printf("pb\n");
 			ft_push(a, b);
 			i--;
 		}
 		else
 		{
-			write(1, "ra\n", 3);
+			ft_printf("ra\n");
 			ft_rotate(a);
 		}
 	}
