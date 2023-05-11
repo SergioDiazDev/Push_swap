@@ -66,6 +66,6 @@ int		ft_next_move(t_stack **a, t_stack **b, int index);
 int		ft_stack_is_order(t_stack **a);
 void	ft_order3(t_stack **a);
 int		ft_push_a(t_stack **a, t_stack **b, int index);
-void	ft_rr_or_r(t_stack **b, int index);
+void	ft_rr_or_r(t_stack **a, int index, char a_b);
 int		ft_next_move_menos(t_stack **a, t_stack **b, int index);
 #endif
