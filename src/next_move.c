@@ -69,7 +69,7 @@ int	ft_next_move(t_stack **a, t_stack **b, int index)
 		return (ft_printf("sa\npb\n"), ft_swap(a), ft_push(a, b), index + 1);
 	ft_reload_stack(a, 'n');
 	if ((*a)->index == index)
-		return (ft_printf("rra\npb\n"), ft_reverse_rotate(a), ft_push(a, b), index + 1);
+		return (ft_printf("rra\npb\n"), ft_r_rotate(a), ft_push(a, b), index + 1);
 	return (ft_rr_or_r(a, index, 'a'), index);
 }
 
@@ -97,13 +97,13 @@ void	ft_order3(t_stack **a)
 	if ((*a)->value < (*a)->next->value)
 	{
 		ft_printf("rra\n");
-		ft_reverse_rotate(a);
+		ft_r_rotate(a);
 		if (ft_stack_is_order(a))
 			return ;
 		return ((void)ft_printf("sa\n"), ft_swap(a));
 	}
 	if ((*a)->next->value > (*a)->next->next->value)
-		return ((void)ft_printf("sa\nrra\n"), ft_swap(a), ft_reverse_rotate(a));
+		return ((void)ft_printf("sa\nrra\n"), ft_swap(a), ft_r_rotate(a));
 	if ((*a)->value > (*a)->next->next->value)
 		return ((void)ft_printf("ra\n"), ft_rotate(a));
 	return ((void)ft_printf("sa\n"), ft_swap(a));
@@ -111,7 +111,7 @@ void	ft_order3(t_stack **a)
 
 int	ft_push_a(t_stack **a, t_stack **b, int index)
 {
-	ft_reload_stack(a, 'a');
+	ft_reload_stack(a, 'b');
 	ft_reload_stack(b, 'b');
 	if (!*b)
 		return (-2);
@@ -121,7 +121,7 @@ int	ft_push_a(t_stack **a, t_stack **b, int index)
 		return (ft_printf("sb\npa\n"), ft_swap(b), ft_push(b, a), index - 1);
 	ft_reload_stack(b, 'n');
 	if ((*b)->index == index)
-		return (ft_printf("rrb\npa\n"), ft_reverse_rotate(b), ft_push(b, a), index - 1);
+		return (ft_printf("rrb\npa\n"), ft_r_rotate(b), ft_push(b, a), index - 1);
 	return (ft_rr_or_r(b, index, 'b'), index);
 }
 
@@ -147,7 +147,7 @@ void	ft_rr_or_r(t_stack **a, int index, char a_b)
 	if (rr > r)
 		return ((void)ft_printf("r%c\n", a_b), ft_rotate(a));
 	else
-		return ((void)ft_printf("rr%c\n", a_b), ft_reverse_rotate(a));
+		return ((void)ft_printf("rr%c\n", a_b), ft_r_rotate(a));
 }
 
 int	ft_next_move_menos(t_stack **a, t_stack **b, int index)
@@ -162,6 +162,6 @@ int	ft_next_move_menos(t_stack **a, t_stack **b, int index)
 		return (ft_printf("sa\npb\n"), ft_swap(a), ft_push(a, b), index - 1);
 	ft_reload_stack(a, 'n');
 	if ((*a)->index == index)
-		return (ft_printf("rra\npb\n"), ft_reverse_rotate(a), ft_push(a, b), index - 1);
+		return (ft_printf("rra\npb\n"), ft_r_rotate(a), ft_push(a, b), index - 1);
 	return (ft_rr_or_r(a, index, 'a'), index);
 }

@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	int		i;
 	int		j;
 
-	//atexit(ft_leaks);
+	atexit(ft_leaks);
 	if (argc <= 1)
 		return (0);
 	a = (t_stack **)malloc(sizeof(t_stack *));
@@ -33,9 +33,9 @@ int	main(int argc, char **argv)
 		if (!split)
 			return (ft_printf("Error\n"), ft_free_stack(a), 0);
 		i = -1;
-		while (split[++i])
-			free(split[i]);
-		free(split);
+		// while (split[++i])
+		//  	free(split[i]);
+		// free(split);
 	}
 	else if (argc > 2)
 		ft_procces_stack(a, argc, argv);
@@ -46,13 +46,14 @@ int	main(int argc, char **argv)
 		i = ft_stack_index(a, i);
 	if (i == -2)
 		return (ft_printf("Error\n"), ft_free_stack(a), 0);
-	j = 1;
+	j = 0;
 	ft_reload_stack(a, 'b');
 	while ((*a)->next)
 	{
 		j++;
 		*a = (*a)->next;
 	}
+	j++;
 	if (j == 1 || ft_stack_is_order(a))
 		return (ft_free_stack(a), 0);
 	b = (t_stack **)malloc(sizeof(t_stack *));
@@ -88,7 +89,7 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 	while (i > 0)
 	{
 		ft_reload_stack(a, 'b');
-		if ((*a)->index < (j / 2))
+		if ((*a)->index < (j / 2) - 1)
 		{
 			ft_printf("pb\n");
 			ft_push(a, b);
@@ -106,7 +107,6 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 	j -= 1;
 	while (j > (j / 2))
 		j = ft_next_move_menos(a, b, j);
-	ft_order3(a);
 	while (i >= 0)
 		i = ft_push_a(a, b, i);
 }

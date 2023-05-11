@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:28:37 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/14 15:52:33 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:17:34 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	**ft_split(char *str, char sep)
 
 	word = ft_count_sep(str, sep);
 	result = ft_calloc(sizeof(char **), word + 2);
+	result[word + 2] = NULL;
 	if (!result)
 		return (NULL);
 	init = 0;
