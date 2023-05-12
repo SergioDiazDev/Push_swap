@@ -98,7 +98,7 @@ void	ft_rr_or_r(t_stack **a, int index, char a_b)
 	int	rr;
 	int	r;
 
-	rr = 0;
+	rr = 1;
 	r = 0;
 	ft_reload_stack(a, 'b');
 	while ((*a)->index != index)
@@ -109,10 +109,10 @@ void	ft_rr_or_r(t_stack **a, int index, char a_b)
 	ft_reload_stack(a, 'n');
 	while ((*a)->index != index)
 	{
-		rr++;
+		rr++;	
 		*a = (*a)->back;
 	}
-	if (rr > r)
+	if (rr >= r)
 		return ((void)ft_printf("r%c\n", a_b), ft_rotate(a));
 	else
 		return ((void)ft_printf("rr%c\n", a_b), ft_r_rotate(a));
