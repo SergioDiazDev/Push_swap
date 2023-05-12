@@ -16,13 +16,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
+	char	**split;
 	int		j;
 
-	//atexit(ft_leaks);
+	split = NULL;
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
 		return (0);
-	if (!ft_arg_process(argc, argv, a))
+	if (!ft_arg_process(argc, argv, a, split))
 		return (0);
 	j = ft_reload_stack(a, 'b');
 	if (j == 1 || ft_stack_is_order(a))
@@ -34,7 +35,9 @@ int	main(int argc, char **argv)
 		ft_sort_50(a, b, j);
 	else
 		ft_sort_all(a, b, j);
-	return (ft_free_stack(a), ft_free_stack(b), 0);
+	ft_free_stack(a);
+	ft_free_stack(b);
+	return (0);
 }
 
 void	ft_sort_50(t_stack **a, t_stack **b, int j)
@@ -80,9 +83,8 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 		i = ft_push_a(a, b, i);
 }
 
-int	ft_arg_process(int argc, char **argv, t_stack **a)
+int	ft_arg_process(int argc, char **argv, t_stack **a, char **split)
 {
-	char	**split;
 	int		i;
 
 	if (argc <= 1)
@@ -103,4 +105,20 @@ int	ft_arg_process(int argc, char **argv, t_stack **a)
 	if (i == -2)
 		return (ft_printf("Error\n"), ft_free_stack(a), 0);
 	return (1);
+}
+
+void	ft_free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	if (split)
+	{
+		while (split[i])
+		{
+			free(split[i]);
+			i++;
+		}
+		free(split);
+	}
 }
