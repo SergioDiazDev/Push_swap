@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	int		j;
 
 	split = NULL;
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	if (argc <= 1)
 		return (0);
 	a = (t_stack **)malloc(sizeof(t_stack *));
@@ -87,7 +87,7 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 {
 	int	i;
 
-	i = (j / 2);
+	i = (j / 2) - 1;
 	while (i > 0)
 	{
 		ft_reload_stack(a, 'b');
