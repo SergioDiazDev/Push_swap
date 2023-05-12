@@ -16,55 +16,24 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
-	char	**split;
-	int		i;
 	int		j;
 
-	split = NULL;
 	//atexit(ft_leaks);
-	if (argc <= 1)
-		return (0);
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
 		return (0);
-	if (argc == 2)
-	{
-		split = ft_split(argv[1], ' ');
-		ft_procces_stack_one(a, split);
-	}
-	else if (argc > 2)
-		ft_procces_stack(a, argc, argv);
-	if (!a)
-		return (ft_printf("Error\n"), 0);
-	i = 0;
-	while (i >= 0)
-		i = ft_stack_index(a, i);
-	if (i == -2)
-		return (ft_printf("Error\n"), ft_free_stack(a), 0);
-	j = 0;
-	ft_reload_stack(a, 'b');
-	while ((*a)->next)
-	{
-		j++;
-		*a = (*a)->next;
-	}
-	j++;
+	if (!ft_arg_process(argc, argv, a))
+		return (0);
+	j = ft_reload_stack(a, 'b');
 	if (j == 1 || ft_stack_is_order(a))
 		return (ft_free_stack(a), 0);
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	if (!b)
-		return (0);
+		return (ft_free_stack(a), 0);
 	if (j <= 50)
 		ft_sort_50(a, b, j);
 	else
 		ft_sort_all(a, b, j);
-	if (split)
-	{
-		i = -1;
-		while (split[++i])
-			free(split[i]);
-		free(split);
-	}
 	return (ft_free_stack(a), ft_free_stack(b), 0);
 }
 
@@ -104,8 +73,6 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 		}
 	}
 	i = j - 1;
-	ft_reload_stack(a, 'b');
-	ft_reload_stack(b, 'b');
 	j -= 1;
 	while (j > (j / 2))
 		j = ft_next_move_menos(a, b, j);
@@ -113,24 +80,27 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 		i = ft_push_a(a, b, i);
 }
 
-void	ft_leaks(void)
+int	ft_arg_process(int argc, char **argv, t_stack **a)
 {
-	system("leaks push_swap");
-}
+	char	**split;
+	int		i;
 
-void	ft_free_stack(t_stack **a)
-{
-	if (!a)
-		return ;
-	if (*a)
+	if (argc <= 1)
+		return (0);
+	if (argc == 2)
 	{
-		ft_reload_stack(a, 'n');
-		while ((*a)->back)
-		{
-			(*a) = (*a)->back;
-			free((*a)->next);
-		}
-		free(*a);
+		split = ft_split(argv[1], ' ');
+		ft_procces_stack_one(a, split);
+		i = -1;
 	}
-	free(a);
+	else if (argc > 2)
+		ft_procces_stack(a, argc, argv);
+	if (!a)
+		return (ft_printf("Error\n"), 0);
+	i = 0;
+	while (i >= 0)
+		i = ft_stack_index(a, i);
+	if (i == -2)
+		return (ft_printf("Error\n"), ft_free_stack(a), 0);
+	return (1);
 }

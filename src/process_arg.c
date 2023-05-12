@@ -18,14 +18,14 @@ void	ft_procces_stack(t_stack **a, int argc, char **argv)
 		ft_stack_new(a, ft_atoi(argv[argc]));
 }
 
-void	ft_procces_stack_one(t_stack **a, char **argv)
+void	ft_procces_stack_one(t_stack **a, char **split)
 {
 	int	i;
 
 	i = -1;
-	while (argv[++i])
+	while (split[++i])
 		;
-	while (--i != -1 && ft_stack_new(a, ft_atoi(argv[i])))
+	while (--i != -1 && ft_stack_new(a, ft_atoi(split[i])))
 		;
 }
 
@@ -48,14 +48,44 @@ t_stack	*ft_stack_new(t_stack **a, long value)
 	return (new);
 }
 
-void	ft_reload_stack(t_stack **a, char next_back)
+int	ft_reload_stack(t_stack **a, char next_back)
 {
+	int	i;
+
+	i = 1;
 	if (!*a)
-		return ;
+		return (0);
 	if ((*a)->back && next_back == 'b')
+	{
 		while ((*a)->back)
+		{
 			(*a) = (*a)->back;
+			i++;
+		}
+	}
 	if ((*a)->next && next_back == 'n')
+	{
 		while ((*a)->next)
+		{
 			(*a) = (*a)->next;
+			i++;
+		}
+	}
+	return (i);
+}
+
+int	ft_stack_is_order(t_stack **a)
+{
+	ft_reload_stack(a, 'b');
+	if (!*a)
+		return (1);
+	while ((*a)->next)
+	{
+		if ((*a)->index != (*a)->next->index - 1)
+			return (0);
+		*a = (*a)->next;
+	}
+	if ((*a)->back->index != (*a)->index - 1)
+		return (0);
+	return (1);
 }

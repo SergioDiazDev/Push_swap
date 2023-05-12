@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:34 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/04/17 13:55:24 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:44:28 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,26 @@ void	ft_bzero(void *s, int n)
 		str[i] = '\0';
 		i++;
 	}
+}
+
+void	ft_leaks(void)
+{
+	system("leaks push_swap");
+}
+
+void	ft_free_stack(t_stack **a)
+{
+	if (!a)
+		return ;
+	if (*a)
+	{
+		ft_reload_stack(a, 'n');
+		while ((*a)->back)
+		{
+			(*a) = (*a)->back;
+			free((*a)->next);
+		}
+		free(*a);
+	}
+	free(a);
 }
