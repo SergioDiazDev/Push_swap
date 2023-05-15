@@ -109,7 +109,7 @@ void	ft_rr_or_r(t_stack **a, int index, char a_b)
 	ft_reload_stack(a, 'n');
 	while ((*a)->index != index)
 	{
-		rr++;	
+		rr++;
 		*a = (*a)->back;
 	}
 	if (rr >= r)
