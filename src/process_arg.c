@@ -30,6 +30,7 @@ void	ft_procces_stack_one(t_stack **a, char **split)
 		;
 }
 //leaks
+
 t_stack	*ft_stack_new(t_stack **a, long value)
 {
 	t_stack	*new;
