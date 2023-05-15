@@ -18,6 +18,7 @@ void	ft_procces_stack(t_stack **a, int argc, char **argv)
 		ft_stack_new(a, ft_atoi(argv[argc]));
 }
 
+//leaks
 void	ft_procces_stack_one(t_stack **a, char **split)
 {
 	int	i;
@@ -28,7 +29,7 @@ void	ft_procces_stack_one(t_stack **a, char **split)
 	while (--i != -1 && ft_stack_new(a, ft_atoi(split[i])))
 		;
 }
-
+//leaks
 t_stack	*ft_stack_new(t_stack **a, long value)
 {
 	t_stack	*new;

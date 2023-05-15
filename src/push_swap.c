@@ -19,12 +19,13 @@ int	main(int argc, char **argv)
 	char	**split;
 	int		j;
 
+	atexit(ft_leaks);
 	split = NULL;
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
 		return (0);
 	if (!ft_arg_process(argc, argv, a, split))
-		return (0);
+		return (ft_free_stack(a), 0);
 	j = ft_reload_stack(a, 'b');
 	if (j == 1 || ft_stack_is_order(a))
 		return (ft_free_stack(a), 0);
@@ -133,7 +134,7 @@ int	ft_arg_process(int argc, char **argv, t_stack **a, char **split)
 	while (i >= 0)
 		i = ft_stack_index(a, i);
 	if (i == -2)
-		return (ft_printf("Error\n"), ft_free_stack(a), 0);
+		return (ft_printf("Error\n"), 0);
 	return (1);
 }
 
