@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+//atexit(ft_leaks);
 int	main(int argc, char **argv)
 {
 	t_stack	**a;
@@ -19,7 +20,6 @@ int	main(int argc, char **argv)
 	char	**split;
 	int		j;
 
-	atexit(ft_leaks);
 	split = NULL;
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
