@@ -60,6 +60,21 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 	int	i;
 
 	i = (j / 2) - 1;
+	while (i > j / 4)
+	{
+		ft_reload_stack(a, 'b');
+		if ((*a)->index < (j / 4) - 1)
+		{
+			ft_printf("pb\n");
+			ft_push(a, b);
+			i--;
+		}
+		else
+		{
+			ft_printf("ra\n");
+			ft_rotate(a);
+		}
+	}
 	while (i > 0)
 	{
 		ft_reload_stack(a, 'b');
