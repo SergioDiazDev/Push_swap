@@ -79,7 +79,7 @@ def test_push_swap(array_len: int, move_limit: int):
         perm = permutations(random_list)
     else:
         perm = set()
-        for i in range(25):
+        for i in range(50):
             random.shuffle(random_list)
             perm.add(tuple(random_list))
 
