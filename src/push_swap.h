@@ -64,8 +64,9 @@ void	ft_free_stack(t_stack **a);
 //push_swap.c
 int		main(int argc, char **argv);
 void	ft_sort_50(t_stack **a, t_stack **b, int j);
-void	ft_sort_all(t_stack **a, t_stack **b, int j);
-int		ft_arg_process(int argc, char **argv, t_stack **a, char **split);
+void	ft_sort_all(t_stack **a, t_stack **b, int j, int i);
+int		ft_arg_process(int argc, char **argv, t_stack **a);
+void	ft_sort_all_2(double *x, double *y, int j);
 void	ft_free_split(char **split);
 //visualicer_stack.c
 //void	visualicer_stack(t_stack **stack);

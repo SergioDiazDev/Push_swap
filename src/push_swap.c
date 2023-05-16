@@ -17,14 +17,12 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
-	char	**split;
 	int		j;
 
-	split = NULL;
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
 		return (0);
-	if (!ft_arg_process(argc, argv, a, split))
+	if (!ft_arg_process(argc, argv, a))
 		return (ft_free_stack(a), 0);
 	j = ft_reload_stack(a, 'b');
 	if (j == 1 || ft_stack_is_order(a))
@@ -35,10 +33,12 @@ int	main(int argc, char **argv)
 	if (j <= 50)
 		ft_sort_50(a, b, j);
 	else
-		ft_sort_all(a, b, j);
-	ft_free_stack(a);
-	ft_free_stack(b);
-	return (0);
+	{
+		ft_sort_all(a, b, j, j - 1);
+		while (j >= 0)
+			j = ft_push_a(a, b, j - 1) + 1;
+	}
+	return (ft_free_stack(a), ft_free_stack(b), 0);
 }
 
 void	ft_sort_50(t_stack **a, t_stack **b, int j)
@@ -56,82 +56,52 @@ void	ft_sort_50(t_stack **a, t_stack **b, int j)
 		j = ft_push_a(a, b, j);
 }
 
-void	ft_sort_all(t_stack **a, t_stack **b, int j)
+void	ft_sort_all(t_stack **a, t_stack **b, int j, int i)
 {
-	int	i;
+	double	x;
+	double	y;
 
-	i = j - 1;
-	while (i > j * 0.80)
+	x = 0.8;
+	y = 0.2;
+	while (x > 0)
 	{
-		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.2 - 1)
+		while (i > j * x)
 		{
-			ft_printf("pb\n");
-			ft_push(a, b);
-			i--;
-		}
-		else
-		{
+			ft_reload_stack(a, 'b');
+			if ((*a)->index < j * y - 1)
+			{
+				ft_printf("pb\n");
+				ft_push(a, b);
+				i--;
+			}
 			ft_printf("ra\n");
 			ft_rotate(a);
 		}
+		ft_sort_all_2(&x, &y, j);
 	}
-	while (i > j * 0.60)
-	{
-		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.40 - 1)
-		{
-			ft_printf("pb\n");
-			ft_push(a, b);
-			i--;
-		}
-		else
-		{
-			ft_printf("ra\n");
-			ft_rotate(a);
-		}
-	}
-	while (i > j * 0.4)
-	{
-		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.6 - 1)
-		{
-			ft_printf("pb\n");
-			ft_push(a, b);
-			i--;
-		}
-		else
-		{
-			ft_printf("ra\n");
-			ft_rotate(a);
-		}
-	}
-	while (i > j * 0.2)
-	{
-		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.8 - 1)
-		{
-			ft_printf("pb\n");
-			ft_push(a, b);
-			i--;
-		}
-		else
-		{
-			ft_printf("ra\n");
-			ft_rotate(a);
-		}
-	}
-	i = j - 1;
-	j -= 1;
+	i = --j;
 	while (j > (j / 2))
 		j = ft_next_move_menos(a, b, j);
-	while (i >= 0)
-		i = ft_push_a(a, b, i);
 }
 
-int	ft_arg_process(int argc, char **argv, t_stack **a, char **split)
+void	ft_sort_all_2(double *x, double *y, int j)
+{
+	if (j > 250)
+	{
+		*x -= 0.1;
+		*y += 0.1;
+	}
+	else
+	{
+		*x -= 0.2;
+		*y += 0.2;
+	}
+}
+
+int	ft_arg_process(int argc, char **argv, t_stack **a)
 {
 	int		i;
+	char	**split;
 
 	if (argc <= 1)
 		return (0);
@@ -151,20 +121,4 @@ int	ft_arg_process(int argc, char **argv, t_stack **a, char **split)
 	if (i == -2)
 		return (ft_printf("Error\n"), 0);
 	return (1);
-}
-
-void	ft_free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (split)
-	{
-		while (split[i])
-		{
-			free(split[i]);
-			i++;
-		}
-		free(split);
-	}
 }
