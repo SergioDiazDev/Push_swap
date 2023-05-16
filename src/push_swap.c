@@ -61,10 +61,10 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 	int	i;
 
 	i = j - 1;
-	while (i > j * 0.75)
+	while (i > j * 0.80)
 	{
 		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.25 - 1)
+		if ((*a)->index < j * 0.2 - 1)
 		{
 			ft_printf("pb\n");
 			ft_push(a, b);
@@ -76,10 +76,10 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 			ft_rotate(a);
 		}
 	}
-	while (i > j * 0.5)
+	while (i > j * 0.60)
 	{
 		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.5 - 1)
+		if ((*a)->index < j * 0.40 - 1)
 		{
 			ft_printf("pb\n");
 			ft_push(a, b);
@@ -91,10 +91,25 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j)
 			ft_rotate(a);
 		}
 	}
-	while (i > j * 0.25)
+	while (i > j * 0.4)
 	{
 		ft_reload_stack(a, 'b');
-		if ((*a)->index < j * 0.75 - 1)
+		if ((*a)->index < j * 0.6 - 1)
+		{
+			ft_printf("pb\n");
+			ft_push(a, b);
+			i--;
+		}
+		else
+		{
+			ft_printf("ra\n");
+			ft_rotate(a);
+		}
+	}
+	while (i > j * 0.2)
+	{
+		ft_reload_stack(a, 'b');
+		if ((*a)->index < j * 0.8 - 1)
 		{
 			ft_printf("pb\n");
 			ft_push(a, b);
