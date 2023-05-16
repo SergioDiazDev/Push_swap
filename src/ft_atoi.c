@@ -6,13 +6,13 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 12:20:20 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/05/12 10:07:45 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:13:28 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *str)
+long	ft_atoi(char *str)
 {
 	int		i;
 	int		signo;
@@ -51,7 +51,7 @@ int	ft_space(char c)
 	return (0);
 }
 
-long	ft_conum(const char *str, int i)
+long	ft_conum(char *str, int i)
 {
 	long	num;
 

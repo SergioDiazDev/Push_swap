@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-//atexit(ft_leaks);
 int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
 	int		j;
 
+	//atexit(ft_leaks);
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)
 		return (0);
@@ -109,6 +109,7 @@ int	ft_arg_process(int argc, char **argv, t_stack **a)
 	{
 		split = ft_split(argv[1], ' ');
 		ft_procces_stack_one(a, split);
+		ft_free_split(split);
 		i = -1;
 	}
 	else if (argc > 2)

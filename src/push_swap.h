@@ -28,10 +28,10 @@ typedef struct s_stack
 
 //Prototypes
 //ft_atoi.c
-long	ft_atoi(const char *str);
+long	ft_atoi(char *str);
 int		ft_isdigit(int c);
 int		ft_space(char c);
-long	ft_conum(const char *str, int i);
+long	ft_conum(char *str, int i);
 //ft_split.c
 char	**ft_split(char *str, char sep);
 char	*ft_split_2(char *str, char sep, int init, int size);
@@ -61,13 +61,13 @@ void	*ft_calloc(int nmemb, int size);
 void	ft_bzero(void *s, int n);
 void	ft_leaks(void);
 void	ft_free_stack(t_stack **a);
+void	ft_free_split(char **split);
 //push_swap.c
 int		main(int argc, char **argv);
 void	ft_sort_50(t_stack **a, t_stack **b, int j);
 void	ft_sort_all(t_stack **a, t_stack **b, int j, int i);
-int		ft_arg_process(int argc, char **argv, t_stack **a);
 void	ft_sort_all_2(double *x, double *y, int j);
-void	ft_free_split(char **split);
+int		ft_arg_process(int argc, char **argv, t_stack **a);
 //visualicer_stack.c
 //void	visualicer_stack(t_stack **stack);
 // //menu
