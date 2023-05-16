@@ -24,6 +24,7 @@ typedef struct s_stack
 	struct s_stack	*back;
 	int				index;
 	long			value;
+	char			**split;
 }t_stack;
 
 //Prototypes

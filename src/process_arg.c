@@ -28,6 +28,7 @@ void	ft_procces_stack_one(t_stack **a, char **split)
 		;
 	while (--i != -1 && ft_stack_new(a, ft_atoi(split[i])))
 		;
+	(*a)->split = split;
 }
 //leaks
 
