@@ -6,7 +6,7 @@
 /*   By: sdiaz-ru <sdiaz-ru@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:34 by sdiaz-ru          #+#    #+#             */
-/*   Updated: 2023/05/16 15:02:39 by sdiaz-ru         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:05:18 by sdiaz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,13 @@ void	ft_free_stack(t_stack **a)
 			(*a) = (*a)->back;
 			free((*a)->next);
 			if ((*a)->split)
+			{
 				ft_free_split((*a)->split);
+				(*a)->split = NULL;
+			}
 		}
+		if ((*a)->split)
+			ft_free_split((*a)->split);
 		free(*a);
 	}
 	free(a);
