@@ -63,7 +63,7 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j, int i)
 
 	x = 0.8;
 	y = 0.2;
-	while (x > 0)
+	while (x > 0.1)
 	{
 		while (i > j * x)
 		{
