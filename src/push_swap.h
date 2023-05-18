@@ -45,6 +45,7 @@ void	ft_swap(t_stack **origin);
 //next_move_2
 int		ft_push_a(t_stack **a, t_stack **b, int index);
 int		ft_next_move_menos(t_stack **a, t_stack **b, int index);
+void	ft_rr_or_r_2(t_stack **a, double x);
 //next_move
 int		ft_stack_index(t_stack **a, int index);
 int		ft_stack_index2(t_stack **a, int index, int max, t_stack *dir);

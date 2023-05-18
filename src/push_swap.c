@@ -74,8 +74,7 @@ void	ft_sort_all(t_stack **a, t_stack **b, int j, int i)
 				ft_push(a, b);
 				i--;
 			}
-			ft_printf("ra\n");
-			ft_rotate(a);
+			ft_rr_or_r_2(a, j * y - 1);
 		}
 		ft_sort_all_2(&x, &y, j);
 	}
