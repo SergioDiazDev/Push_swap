@@ -30,7 +30,7 @@ OBJS = $(SRCS:.c=.o)
 
 $(TRUE).SILENT:
 
-.PHONY: all re clean fclean
+.PHONY: all test d re clean fclean
 
 all: $(NAME)
 
@@ -57,6 +57,11 @@ fclean:	clean
 	@make -s fclean -C $(DIR_FT_PRINTF)
 	@$(RM) $(NAME)
 	@echo "$(RED)DELETE Push_swap$(RESET)\n"
-			
+
+test:	all
+		time python3 tester.py -n6
+		time python3 tester.py -n100
+		time python3 tester.py -n500
+
 re:	fclean all
 
